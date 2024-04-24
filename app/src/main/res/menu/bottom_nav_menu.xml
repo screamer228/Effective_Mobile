@@ -4,15 +4,25 @@
         android:id="@+id/mainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_plane_bn"
-        android:title="@string/air_tickets" />
+        android:title="@string/air_tickets_bn" />
     <item
         android:id="@+id/hotelsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_hotel_bn"
-        android:title="@string/hotels" />
+        android:title="@string/hotels_bn" />
+    <item
+        android:id="@+id/mapFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_map_bn"
+        android:title="@string/in_short_bn" />
     <item
         android:id="@+id/subsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_bell_bn"
-        android:title="@string/in_short" />
+        android:title="@string/subs_bn" />
+    <item
+        android:id="@+id/profileFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile_bn"
+        android:title="@string/profile_bn" />
 </menu>

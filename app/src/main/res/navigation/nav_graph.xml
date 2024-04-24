@@ -20,4 +20,14 @@
         android:name="com.example.effective_mobile.presentation.SubsFragment"
         android:label="fragment_subs"
         tools:layout="@layout/fragment_subs" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.effective_mobile.presentation.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.effective_mobile.presentation.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

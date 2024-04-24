@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import com.example.effective_mobile.R
 import com.example.effective_mobile.databinding.ActivityHostBinding
 import com.example.effective_mobile.presentation.HotelsFragment
+import com.example.effective_mobile.presentation.MapFragment
+import com.example.effective_mobile.presentation.ProfileFragment
 import com.example.effective_mobile.presentation.SubsFragment
 import com.example.effective_mobile.presentation.main.MainFragment
 
@@ -34,8 +36,16 @@ class HostActivity : AppCompatActivity() {
                     loadFragment(HotelsFragment())
                     true
                 }
+                R.id.mapFragment -> {
+                    loadFragment(MapFragment())
+                    true
+                }
                 R.id.subsFragment -> {
                     loadFragment(SubsFragment())
+                    true
+                }
+                R.id.profileFragment -> {
+                    loadFragment(ProfileFragment())
                     true
                 }
                 else -> {
