@@ -5,4 +5,7 @@
     <string name="subs_fragment">Subs Fragment</string>
     <string name="map_fragment">Map Fragment</string>
     <string name="hotels_fragment">Hotels Fragment</string>
+    <string name="air_tickets">Авиабилеты</string>
+    <string name="hotels">Отели</string>
+    <string name="in_short">Короче</string>
 </resources>

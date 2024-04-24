@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_plane_bn"
+        android:title="@string/air_tickets" />
+    <item
+        android:id="@+id/hotelsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_hotel_bn"
+        android:title="@string/hotels" />
+    <item
+        android:id="@+id/subsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_bell_bn"
+        android:title="@string/in_short" />
+</menu>
