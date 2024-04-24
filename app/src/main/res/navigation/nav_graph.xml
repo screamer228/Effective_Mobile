@@ -9,7 +9,11 @@
         android:id="@+id/mainFragment"
         android:name="com.example.effective_mobile.presentation.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hotelsFragment"
         android:name="com.example.effective_mobile.presentation.HotelsFragment"
@@ -30,4 +34,9 @@
         android:name="com.example.effective_mobile.presentation.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.effective_mobile.presentation.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>

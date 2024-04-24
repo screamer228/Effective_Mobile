@@ -31,6 +31,7 @@
         app:itemActiveIndicatorStyle="@color/transparent"
         app:itemTextAppearanceActiveBoldEnabled="false"
         app:labelVisibilityMode="labeled"
+
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

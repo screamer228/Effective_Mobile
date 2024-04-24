@@ -3,6 +3,9 @@ package com.example.effective_mobile.host
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.effective_mobile.R
 import com.example.effective_mobile.databinding.ActivityHostBinding
 import com.example.effective_mobile.presentation.HotelsFragment
@@ -14,6 +17,7 @@ import com.example.effective_mobile.presentation.main.MainFragment
 class HostActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHostBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,42 +25,11 @@ class HostActivity : AppCompatActivity() {
         binding = ActivityHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        prepareBottomNav()
-    }
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.fragmentContainerView) as NavHostFragment
+        navController = navHostFragment.navController
 
-    private fun prepareBottomNav() {
+        binding.bottomNavigationView.setupWithNavController(navController)
 
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.mainFragment -> {
-                    loadFragment(MainFragment())
-                    true
-                }
-                R.id.hotelsFragment -> {
-                    loadFragment(HotelsFragment())
-                    true
-                }
-                R.id.mapFragment -> {
-                    loadFragment(MapFragment())
-                    true
-                }
-                R.id.subsFragment -> {
-                    loadFragment(SubsFragment())
-                    true
-                }
-                R.id.profileFragment -> {
-                    loadFragment(ProfileFragment())
-                    true
-                }
-                else -> {
-                    false
-                }
-            }
-        }
-    }
-    private fun loadFragment(fragment: Fragment){
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainerView,fragment)
-        transaction.commit()
     }
 }
