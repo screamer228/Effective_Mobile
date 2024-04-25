@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+    <dimen name="fragment_horizontal_margin">16dp</dimen>
+
     <dimen name="size_title_1">22sp</dimen>
     <dimen name="size_title_2">20sp</dimen>
     <dimen name="size_title_3">16sp</dimen>
@@ -9,4 +11,5 @@
     <dimen name="size_text_2">14sp</dimen>
     <dimen name="size_button_text">16sp</dimen>
     <dimen name="size_tab_text">10sp</dimen>
+
 </resources>

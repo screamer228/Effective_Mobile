@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.effective_mobile.R
+import com.example.effective_mobile.CyrillicInputFilter
 import com.example.effective_mobile.databinding.FragmentMainBinding
 import com.example.effective_mobile.presentation.main.viewmodel.MainViewModel
 
@@ -28,6 +28,9 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())
+        binding.editTextTo.filters = arrayOf(CyrillicInputFilter())
 
         binding.button.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToSearchFragment()
