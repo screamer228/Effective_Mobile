@@ -1,14 +1,14 @@
 package com.example.effective_mobile.data.mapper
 
-import com.example.effective_mobile.data.offers.model.Offers
+import com.example.effective_mobile.data.offers.model.response.OffersResponse
 import com.example.effective_mobile.data.offers.model.dto.OfferDTO
 import com.example.effective_mobile.data.offers.model.dto.OffersDTO
 import com.example.effective_mobile.data.offers.model.dto.PriceDTO
 
 class DtoMapper {
 
-    fun mapOffersDTO(response: Offers): OffersDTO {
-        val mappedOffers = response.offers.map { offer ->
+    fun mapOffersDTO(response: OffersResponse): OffersDTO {
+        val mappedOffers = response.offersResponse.map { offer ->
             val imageUrl = when (offer.id) {
                 1 -> {
                     IMG_URL_1

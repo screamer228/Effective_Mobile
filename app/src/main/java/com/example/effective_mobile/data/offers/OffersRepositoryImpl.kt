@@ -3,7 +3,7 @@ package com.example.effective_mobile.data.offers
 import android.content.Context
 import android.content.res.AssetManager
 import com.example.effective_mobile.data.mapper.DtoMapper
-import com.example.effective_mobile.data.offers.model.Offers
+import com.example.effective_mobile.data.offers.model.response.OffersResponse
 import com.example.effective_mobile.data.offers.model.dto.OffersDTO
 import com.example.effective_mobile.domain.OffersRepository
 import com.google.gson.Gson
@@ -16,7 +16,7 @@ class OffersRepositoryImpl(
     override fun getOffers(): OffersDTO {
         val gson = Gson()
         val json = getJsonString()
-        val response = gson.fromJson(json, Offers::class.java)
+        val response = gson.fromJson(json, OffersResponse::class.java)
         return dtoMapper.mapOffersDTO(response)
     }
 
