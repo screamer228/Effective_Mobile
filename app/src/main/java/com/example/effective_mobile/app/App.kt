@@ -1,21 +1,20 @@
 package com.example.effective_mobile.app
 
 import android.app.Application
-import com.example.effective_mobile.di.appModule
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
+import com.example.effective_mobile.di.AppComponent
+import com.example.effective_mobile.di.AppModule
+import com.example.effective_mobile.di.DaggerAppComponent
 
 class App : Application() {
+
+    lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()
 
-        startKoin {
-            androidLogger(Level.DEBUG)
-            androidContext(this@App)
-            modules(appModule)
-        }
+        appComponent = DaggerAppComponent
+            .builder()
+            .appModule(AppModule(context = this))
+            .build()
     }
 }

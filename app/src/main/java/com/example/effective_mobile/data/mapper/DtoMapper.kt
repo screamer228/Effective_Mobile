@@ -8,8 +8,8 @@ import com.example.effective_mobile.data.offers.model.dto.PriceDTO
 class DtoMapper {
 
     fun mapOffersDTO(response: OffersResponse): OffersDTO {
-        val mappedOffers = response.offersResponse.map { offer ->
-            val imageUrl = when (offer.id) {
+        val mappedOffers = response.offersResponse.map { offerResponse ->
+            val imageUrl = when (offerResponse.id) {
                 1 -> {
                     IMG_URL_1
                 }
@@ -23,7 +23,7 @@ class DtoMapper {
                 }
             }
 
-            OfferDTO(imageUrl, offer.title, offer.town, PriceDTO(offer.price.value))
+            OfferDTO(imageUrl, offerResponse.title, offerResponse.town, PriceDTO(offerResponse.price.value))
         }
         return OffersDTO(mappedOffers)
     }

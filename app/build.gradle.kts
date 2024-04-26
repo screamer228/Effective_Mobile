@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -51,10 +52,15 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
+    //dagger
+    val daggerVersion = "2.50"
+    implementation ("com.google.dagger:dagger:$daggerVersion")
+    kapt ("com.google.dagger:dagger-compiler:$daggerVersion")
+
     //koin
-    val koinVersion = "3.5.6"
-    implementation("io.insert-koin:koin-core:$koinVersion")
-    implementation("io.insert-koin:koin-android:$koinVersion")
+//    val koinVersion = "3.5.6"
+//    implementation("io.insert-koin:koin-core:$koinVersion")
+//    implementation("io.insert-koin:koin-android:$koinVersion")
 
     //navigation
     val navVersion = "2.7.7"

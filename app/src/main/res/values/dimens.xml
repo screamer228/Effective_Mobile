@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <dimen name="fragment_horizontal_margin">16dp</dimen>
+    <dimen name="default_padding_margin">16dp</dimen>
 
     <dimen name="size_title_1">22sp</dimen>
     <dimen name="size_title_2">20sp</dimen>

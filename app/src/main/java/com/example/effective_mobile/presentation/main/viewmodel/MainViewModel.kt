@@ -6,8 +6,9 @@ import com.example.effective_mobile.presentation.main.uistate.MainUiState
 import com.example.effective_mobile.presentation.mapper.OfferMapper
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
-class MainViewModel(
+class MainViewModel @Inject constructor(
     private val offersRepository: OffersRepository,
     private val offerMapper: OfferMapper
 ) : ViewModel() {
@@ -24,5 +25,4 @@ class MainViewModel(
         val mappedOfferList = offerMapper.mapDtoToUiList(offerList)
         _uiState.value = _uiState.value.copy(offersList = mappedOfferList)
     }
-
 }
