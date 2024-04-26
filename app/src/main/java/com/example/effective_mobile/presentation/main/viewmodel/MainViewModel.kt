@@ -19,7 +19,7 @@ class MainViewModel(
         getOffers()
     }
 
-    fun getOffers() {
+    private fun getOffers() {
         val offerList = offersRepository.getOffers()
         val mappedOfferList = offerMapper.mapDtoToUiList(offerList)
         _uiState.value = _uiState.value.copy(offersList = mappedOfferList)
