@@ -3,7 +3,7 @@
     <item
         android:id="@+id/mainFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_plane_bn"
+        android:icon="@drawable/ic_plane"
         android:title="@string/air_tickets_bn" />
     <item
         android:id="@+id/hotelsFragment"

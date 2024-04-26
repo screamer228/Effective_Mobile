@@ -41,13 +41,19 @@ android {
 
 dependencies {
 
+    //coil
+    implementation("io.coil-kt:coil:2.6.0")
+
+    //Gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
     //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
     //koin
     val koinVersion = "3.5.6"
-    implementation ("io.insert-koin:koin-android:$koinVersion")
+    implementation("io.insert-koin:koin-core:$koinVersion")
     implementation("io.insert-koin:koin-android:$koinVersion")
 
     //navigation
@@ -56,9 +62,9 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$navVersion")
 
-    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation ("androidx.activity:activity-ktx:1.9.0")
-    implementation ("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.lifecycle.livedata.ktx)
