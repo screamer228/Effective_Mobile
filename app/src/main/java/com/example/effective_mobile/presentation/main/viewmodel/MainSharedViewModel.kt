@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.effective_mobile.domain.OffersRepository
+import com.example.effective_mobile.presentation.main.uistate.MainNavigationEvent
 import com.example.effective_mobile.presentation.main.uistate.MainUiState
 import com.example.effective_mobile.presentation.mapper.OfferMapper
 import kotlinx.coroutines.Dispatchers
@@ -36,5 +37,13 @@ class MainSharedViewModel @Inject constructor(
     fun setEditTextFromValue(inputString: String) {
         _uiState.value = _uiState.value.copy(inputFrom = inputString)
         Log.d("sharedViewModel check", "in uiState: ${uiState.value.inputFrom}")
+    }
+
+    fun navigateToFragmentMain(event: MainNavigationEvent) {
+        _uiState.value = _uiState.value.copy(navigation = event)
+    }
+
+    fun navigateToFragmentSearch(event: MainNavigationEvent) {
+        _uiState.value = _uiState.value.copy(navigation = event)
     }
 }

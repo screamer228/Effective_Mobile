@@ -15,6 +15,7 @@ import com.example.effective_mobile.CyrillicInputFilter
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentMainBinding
 import com.example.effective_mobile.presentation.main.adapter.OffersAdapter
+import com.example.effective_mobile.presentation.main.uistate.MainNavigationEvent
 import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModel
 import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModelFactory
 import kotlinx.coroutines.launch
@@ -52,10 +53,16 @@ class MainFragment : Fragment() {
         binding.editTextTo.filters = arrayOf(CyrillicInputFilter())
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.uiState.collect { resources ->
-                adapter.updateList(resources.offersList)
-                Log.d("sharedViewModel check", "main fragment collected")
+            viewModel.uiState.collect { uiState ->
+                adapter.updateList(uiState.offersList)
+                when (uiState.navigation) {
+                    is MainNavigationEvent.ResetNavigation -> findNavController().navigateUp()
 
+                    is MainNavigationEvent.ToFragmentSearch -> findNavController().navigate(
+                        MainFragmentDirections.actionMainFragmentToSearchFragment()
+                    )
+                }
+                Log.d("sharedViewModel check", "main fragment collected")
             }
         }
 
@@ -70,9 +77,13 @@ class MainFragment : Fragment() {
 
         binding.editTextTo.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
-                val action = MainFragmentDirections.actionMainFragmentToSearchFragment()
-                findNavController().navigate(action)
+                viewModel.navigateToFragmentSearch(MainNavigationEvent.ToFragmentSearch)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.navigateToFragmentMain(MainNavigationEvent.ResetNavigation)
     }
 }

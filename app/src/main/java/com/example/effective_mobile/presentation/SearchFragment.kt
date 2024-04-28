@@ -51,5 +51,7 @@ class SearchFragment : Fragment() {
         binding.clearIV.setOnClickListener {
             binding.editTextTo.text?.clear()
         }
+
+
     }
 }
