@@ -1,6 +1,9 @@
 package com.example.effective_mobile.presentation.main
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +15,8 @@ import com.example.effective_mobile.CyrillicInputFilter
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentMainBinding
 import com.example.effective_mobile.presentation.main.adapter.OffersAdapter
-import com.example.effective_mobile.presentation.main.viewmodel.MainViewModel
-import com.example.effective_mobile.presentation.main.viewmodel.MainViewModelFactory
+import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModel
+import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModelFactory
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,13 +27,15 @@ class MainFragment : Fragment() {
     private val adapter: OffersAdapter = OffersAdapter()
 
     @Inject
-    lateinit var viewModelFactory: MainViewModelFactory
-    private lateinit var viewModel: MainViewModel
+    lateinit var viewModelFactory: MainSharedViewModelFactory
+    private lateinit var viewModel: MainSharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (requireActivity().applicationContext as App).appComponent.injectMainFragment(this)
+        viewModel = ViewModelProvider(requireActivity(), viewModelFactory)[MainSharedViewModel::class.java]
         _binding = FragmentMainBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -38,8 +43,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity().applicationContext as App).appComponent.injectMainFragment(this)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        Log.d("sharedViewModel check", "main fragment viewModel instance: $viewModel")
+
 
         binding.recyclerViewOffers.adapter = adapter
 
@@ -49,12 +54,27 @@ class MainFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { resources ->
                 adapter.updateList(resources.offersList)
+                Log.d("sharedViewModel check", "main fragment collected")
+
             }
         }
 
-        binding.button.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToSearchFragment()
-            findNavController().navigate(action)
+        binding.editTextFrom.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.setEditTextFromValue(s.toString())
+                Log.d("sharedViewModel check", "afterTextChanged triggered: $s")
+            }
+        })
+
+        binding.editTextTo.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                val action = MainFragmentDirections.actionMainFragmentToSearchFragment()
+                findNavController().navigate(action)
+            }
         }
     }
 }
