@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:background="@color/gray_1">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ticketsOffer_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:backgroundTint="@color/red"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/ticketsOffer_title"
+        style="@style/style_title_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/ticketsOffer_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Уральские авиалинии" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/ticketsOffer_price"
+        style="@style/style_title_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toStartOf="@+id/arrow_right"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2 390 P" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_right"
+        android:paddingTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/ticketsOffer_time"
+        style="@style/style_text_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/ticketsOffer_title"
+        app:layout_constraintTop_toBottomOf="@+id/ticketsOffer_title"
+        tools:text="07:00  09:10   10:00  11:00  12:00  13:00  12:00 1300 14     " />
+    
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:dividerColor="@color/gray_5"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/ticketsOffer_time"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

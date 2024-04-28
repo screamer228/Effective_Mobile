@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentSearchBinding
 import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModel
@@ -52,6 +53,13 @@ class SearchFragment : Fragment() {
             binding.editTextTo.text?.clear()
         }
 
+        binding.istanbul.setOnClickListener {
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToCountrySelectedFragment())
 
+        }
+
+//        if (binding.editTextTo.text?.isNotEmpty() == true) {
+//            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToCountrySelectedFragment())
+//        }
     }
 }

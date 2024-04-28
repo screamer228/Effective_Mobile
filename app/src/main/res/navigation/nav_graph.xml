@@ -38,5 +38,14 @@
         android:id="@+id/searchFragment"
         android:name="com.example.effective_mobile.presentation.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_countrySelectedFragment"
+            app:destination="@id/countrySelectedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countrySelectedFragment"
+        android:name="com.example.effective_mobile.presentation.countryselected.CountrySelectedFragment"
+        android:label="fragment_country_selected"
+        tools:layout="@layout/fragment_country_selected" />
 </navigation>

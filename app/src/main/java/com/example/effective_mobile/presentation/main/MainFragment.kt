@@ -38,6 +38,7 @@ class MainFragment : Fragment() {
         (requireActivity().applicationContext as App).appComponent.injectMainFragment(this)
         viewModel =
             ViewModelProvider(requireActivity(), viewModelFactory)[MainSharedViewModel::class.java]
+
         _binding = FragmentMainBinding.inflate(layoutInflater)
         return binding.root
     }
