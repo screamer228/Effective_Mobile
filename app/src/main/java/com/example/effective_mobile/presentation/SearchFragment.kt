@@ -39,7 +39,6 @@ class SearchFragment : Fragment() {
 
         Log.d("sharedViewModel check", "search fragment viewModel instance: $viewModel")
 
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
                 binding.editTextFrom.setText(uiState.inputFrom)

@@ -35,7 +35,8 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         (requireActivity().applicationContext as App).appComponent.injectMainFragment(this)
-        viewModel = ViewModelProvider(requireActivity(), viewModelFactory)[MainSharedViewModel::class.java]
+        viewModel =
+            ViewModelProvider(requireActivity(), viewModelFactory)[MainSharedViewModel::class.java]
         _binding = FragmentMainBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -44,7 +45,6 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         Log.d("sharedViewModel check", "main fragment viewModel instance: $viewModel")
-
 
         binding.recyclerViewOffers.adapter = adapter
 
@@ -61,9 +61,7 @@ class MainFragment : Fragment() {
 
         binding.editTextFrom.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
             override fun afterTextChanged(s: Editable?) {
                 viewModel.setEditTextFromValue(s.toString())
                 Log.d("sharedViewModel check", "afterTextChanged triggered: $s")

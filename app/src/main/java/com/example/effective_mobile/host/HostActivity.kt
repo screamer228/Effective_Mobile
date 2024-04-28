@@ -34,8 +34,6 @@ class HostActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
 
         (applicationContext as App).appComponent.injectHostActivity(this)
-
-        // Создание MainSharedViewModel
         mainSharedViewModel = ViewModelProvider(this, mainSharedViewModelFactory).get(MainSharedViewModel::class.java)
     }
 }
