@@ -4,5 +4,5 @@ data class OfferDTO(
     val imageUrl: String,
     val title: String,
     val town: String,
-    val price: PriceDTO,
+    val price: String,
 )

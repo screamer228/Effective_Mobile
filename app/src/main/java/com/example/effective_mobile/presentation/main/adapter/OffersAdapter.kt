@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.effective_mobile.databinding.ItemOfferBinding
-import com.example.effective_mobile.presentation.model.Offer
-import com.example.effective_mobile.utils.MyDiffUtil
+import com.example.effective_mobile.presentation.main.model.Offer
+import com.example.effective_mobile.utils.OffersDiffUtil
 
 class OffersAdapter() : RecyclerView.Adapter<OffersAdapter.ViewHolder>() {
 
@@ -39,7 +39,7 @@ class OffersAdapter() : RecyclerView.Adapter<OffersAdapter.ViewHolder>() {
     }
 
     fun updateList(newDataList: List<Offer>) {
-        val diffUtil = MyDiffUtil(offersList, newDataList)
+        val diffUtil = OffersDiffUtil(offersList, newDataList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         offersList = newDataList
         diffResult.dispatchUpdatesTo(this)

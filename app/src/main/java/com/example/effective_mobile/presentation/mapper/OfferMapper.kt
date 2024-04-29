@@ -2,7 +2,7 @@ package com.example.effective_mobile.presentation.mapper
 
 import com.example.effective_mobile.data.offers.model.dto.OfferDTO
 import com.example.effective_mobile.data.offers.model.dto.OffersDTO
-import com.example.effective_mobile.presentation.model.Offer
+import com.example.effective_mobile.presentation.main.model.Offer
 
 class OfferMapper {
 
@@ -12,12 +12,12 @@ class OfferMapper {
         }
     }
 
-    fun mapDtoToUi(dto: OfferDTO): Offer {
+    private fun mapDtoToUi(dto: OfferDTO): Offer {
         return Offer(
             imageUrl = dto.imageUrl,
             title = dto.title,
             town = dto.town,
-            price = dto.price.value.toString()
+            price = dto.price
         )
     }
 }

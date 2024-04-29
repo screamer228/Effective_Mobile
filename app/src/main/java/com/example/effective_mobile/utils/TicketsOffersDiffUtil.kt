@@ -1,11 +1,11 @@
 package com.example.effective_mobile.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.effective_mobile.presentation.model.Offer
+import com.example.effective_mobile.presentation.countryselected.model.TicketsOffer
 
-class MyDiffUtil(
-    private val oldList: List<Offer>,
-    private val newList: List<Offer>
+class TicketsOffersDiffUtil(
+    private val oldList: List<TicketsOffer>,
+    private val newList: List<TicketsOffer>
 ): DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
@@ -21,16 +21,16 @@ class MyDiffUtil(
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return when {
-            oldList[oldItemPosition].imageUrl != newList[newItemPosition].imageUrl -> {
-                false
-            }
+//            oldList[oldItemPosition].iconColor != newList[newItemPosition].iconColor -> {
+//                false
+//            }
             oldList[oldItemPosition].title != newList[newItemPosition].title -> {
                 false
             }
-            oldList[oldItemPosition].town != newList[newItemPosition].town -> {
+            oldList[oldItemPosition].price != newList[newItemPosition].price -> {
                 false
             }
-            oldList[oldItemPosition].price != newList[newItemPosition].price -> {
+            oldList[oldItemPosition].timeRange != newList[newItemPosition].timeRange -> {
                 false
             }
             else -> true

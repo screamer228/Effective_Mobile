@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.effective_mobile.R
 import com.example.effective_mobile.databinding.ItemTicketsOffersBinding
-import com.example.effective_mobile.presentation.model.Offer
-import com.example.effective_mobile.utils.MyDiffUtil
+import com.example.effective_mobile.presentation.main.model.Offer
+import com.example.effective_mobile.utils.OffersDiffUtil
 
 class TicketsOffersAdapter() : RecyclerView.Adapter<TicketsOffersAdapter.ViewHolder>() {
 
@@ -52,7 +52,7 @@ class TicketsOffersAdapter() : RecyclerView.Adapter<TicketsOffersAdapter.ViewHol
     }
 
     fun updateList(newDataList: List<Offer>) {
-        val diffUtil = MyDiffUtil(offersList, newDataList)
+        val diffUtil = OffersDiffUtil(offersList, newDataList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         offersList = newDataList
         diffResult.dispatchUpdatesTo(this)

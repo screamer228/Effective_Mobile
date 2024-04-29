@@ -3,7 +3,6 @@ package com.example.effective_mobile.data.mapper
 import com.example.effective_mobile.data.offers.model.response.OffersResponse
 import com.example.effective_mobile.data.offers.model.dto.OfferDTO
 import com.example.effective_mobile.data.offers.model.dto.OffersDTO
-import com.example.effective_mobile.data.offers.model.dto.PriceDTO
 
 class DtoMapper {
 
@@ -23,7 +22,7 @@ class DtoMapper {
                 }
             }
 
-            OfferDTO(imageUrl, offerResponse.title, offerResponse.town, PriceDTO(offerResponse.price.value))
+            OfferDTO(imageUrl, offerResponse.title, offerResponse.town, offerResponse.price.value.toString())
         }
         return OffersDTO(mappedOffers)
     }
