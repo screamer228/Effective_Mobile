@@ -1,7 +1,7 @@
 package com.example.effective_mobile.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.effective_mobile.presentation.countryselected.model.TicketsOffer
+import com.example.effective_mobile.presentation.countryselected_fragment.model.TicketsOffer
 
 class TicketsOffersDiffUtil(
     private val oldList: List<TicketsOffer>,

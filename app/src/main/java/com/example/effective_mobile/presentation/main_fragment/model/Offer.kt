@@ -1,4 +1,4 @@
-package com.example.effective_mobile.presentation.main.model
+package com.example.effective_mobile.presentation.main_fragment.model
 
 data class Offer(
     val imageUrl: String,

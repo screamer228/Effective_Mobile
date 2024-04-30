@@ -1,4 +1,4 @@
-package com.example.effective_mobile.presentation.main.uistate
+package com.example.effective_mobile.presentation.main_fragment.uistate
 
 sealed class MainNavigationEvent {
     data object ToFragmentSearch : MainNavigationEvent()

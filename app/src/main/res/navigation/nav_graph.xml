@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.effective_mobile.presentation.main.MainFragment"
+        android:name="com.example.effective_mobile.presentation.main_fragment.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
@@ -36,7 +36,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.effective_mobile.presentation.SearchFragment"
+        android:name="com.example.effective_mobile.presentation.search_fragment.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/countrySelectedFragment"
-        android:name="com.example.effective_mobile.presentation.countryselected.CountrySelectedFragment"
+        android:name="com.example.effective_mobile.presentation.countryselected_fragment.CountrySelectedFragment"
         android:label="fragment_country_selected"
         tools:layout="@layout/fragment_country_selected" />
 </navigation>

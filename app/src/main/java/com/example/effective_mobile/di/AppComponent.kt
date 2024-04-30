@@ -4,14 +4,16 @@ import com.example.effective_mobile.host.HostActivity
 import com.example.effective_mobile.presentation.HotelsFragment
 import com.example.effective_mobile.presentation.MapFragment
 import com.example.effective_mobile.presentation.ProfileFragment
-import com.example.effective_mobile.presentation.SearchFragment
+import com.example.effective_mobile.presentation.search_fragment.SearchFragment
 import com.example.effective_mobile.presentation.SubsFragment
-import com.example.effective_mobile.presentation.main.MainFragment
+import com.example.effective_mobile.presentation.countryselected_fragment.CountrySelectedFragment
+import com.example.effective_mobile.presentation.main_fragment.MainFragment
 import dagger.Component
 
 @Component(modules = [AppModule::class])
 interface AppComponent {
 
+    fun injectCountrySelectedFragment(countrySelectedFragment: CountrySelectedFragment)
     fun injectHostActivity(hostActivity: HostActivity)
     fun injectMainFragment(mainFragment: MainFragment)
     fun injectSearchFragment(searchFragment: SearchFragment)

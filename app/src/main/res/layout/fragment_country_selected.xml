@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".presentation.countryselected.CountrySelectedFragment">
+    tools:context=".presentation.countryselected_fragment.CountrySelectedFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/heistCardView"
@@ -202,6 +202,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_tickets_offers" />
 
@@ -274,8 +276,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="8dp"
-            app:thumbTint="@color/white"
-            android:buttonTint="@color/blue" />
+            android:buttonTint="@color/blue"
+            app:thumbTint="@color/white" />
 
     </androidx.cardview.widget.CardView>
 

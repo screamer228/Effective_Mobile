@@ -4,7 +4,7 @@ import com.example.effective_mobile.data.offers.model.response.OffersResponse
 import com.example.effective_mobile.data.offers.model.dto.OfferDTO
 import com.example.effective_mobile.data.offers.model.dto.OffersDTO
 
-class DtoMapper {
+class OffersDtoMapper {
 
     fun mapOffersDTO(response: OffersResponse): OffersDTO {
         val mappedOffers = response.offersResponse.map { offerResponse ->
