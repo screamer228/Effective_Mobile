@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray_2"
     android:orientation="vertical"
-    tools:context=".presentation.SearchFragment">
+    tools:context=".presentation.search_fragment.SearchFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"

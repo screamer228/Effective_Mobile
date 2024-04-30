@@ -2,7 +2,7 @@ package com.example.effective_mobile.presentation.mapper
 
 import com.example.effective_mobile.data.offers.model.dto.OfferDTO
 import com.example.effective_mobile.data.offers.model.dto.OffersDTO
-import com.example.effective_mobile.presentation.main.model.Offer
+import com.example.effective_mobile.presentation.main_fragment.model.Offer
 
 class OfferMapper {
 

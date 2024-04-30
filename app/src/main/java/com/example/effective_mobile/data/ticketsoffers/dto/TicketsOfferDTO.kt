@@ -1,8 +1,7 @@
 package com.example.effective_mobile.data.ticketsoffers.dto
 
-data class TicketsOfferDto(
-//    @DrawableRes val iconColor: Int,
+data class TicketsOfferDTO(
     val title: String,
     val price: String,
-    val timeRange: List<String>
+    val timeRange: String
 )

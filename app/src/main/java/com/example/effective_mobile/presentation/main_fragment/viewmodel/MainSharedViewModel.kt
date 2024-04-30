@@ -1,11 +1,11 @@
-package com.example.effective_mobile.presentation.main.viewmodel
+package com.example.effective_mobile.presentation.main_fragment.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.effective_mobile.domain.OffersRepository
-import com.example.effective_mobile.presentation.main.uistate.MainNavigationEvent
-import com.example.effective_mobile.presentation.main.uistate.MainUiState
+import com.example.effective_mobile.presentation.main_fragment.uistate.MainNavigationEvent
+import com.example.effective_mobile.presentation.main_fragment.uistate.MainUiState
 import com.example.effective_mobile.presentation.mapper.OfferMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

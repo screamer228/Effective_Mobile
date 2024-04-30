@@ -1,4 +1,4 @@
-package com.example.effective_mobile.presentation.countryselected.uistate
+package com.example.effective_mobile.presentation.countryselected_fragment.uistate
 
 sealed class CountrySelectedNavigationEvent {
     data object ToFragmentTickets : CountrySelectedNavigationEvent()

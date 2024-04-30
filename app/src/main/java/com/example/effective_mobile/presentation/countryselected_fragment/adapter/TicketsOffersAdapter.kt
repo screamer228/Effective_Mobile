@@ -1,21 +1,24 @@
-package com.example.effective_mobile.presentation.countryselected.adapter
+package com.example.effective_mobile.presentation.countryselected_fragment.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.effective_mobile.R
 import com.example.effective_mobile.databinding.ItemTicketsOffersBinding
-import com.example.effective_mobile.presentation.main.model.Offer
-import com.example.effective_mobile.utils.OffersDiffUtil
+import com.example.effective_mobile.presentation.countryselected_fragment.model.TicketsOffer
+import com.example.effective_mobile.utils.TicketsOffersDiffUtil
 
-class TicketsOffersAdapter() : RecyclerView.Adapter<TicketsOffersAdapter.ViewHolder>() {
+class TicketsOffersAdapter(private val context: Context) :
+    RecyclerView.Adapter<TicketsOffersAdapter.ViewHolder>() {
 
-    private var offersList: List<Offer> = listOf()
+    private var ticketsOffersList: List<TicketsOffer> = listOf()
 
     inner class ViewHolder(private val binding: ItemTicketsOffersBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Offer, position: Int) {
+        fun bind(item: TicketsOffer, position: Int) {
             val iconColor = when (position) {
                 0 -> {
                     R.color.red
@@ -29,10 +32,15 @@ class TicketsOffersAdapter() : RecyclerView.Adapter<TicketsOffersAdapter.ViewHol
                     R.color.white
                 }
             }
-            binding.ticketsOfferIcon.setCardBackgroundColor(iconColor)
+            binding.ticketsOfferIcon.setCardBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    iconColor
+                )
+            )
             binding.ticketsOfferTitle.text = item.title
-            binding.ticketsOfferPrice.text = item.town
-            binding.ticketsOfferTime.text = item.price
+            binding.ticketsOfferPrice.text = item.price
+            binding.ticketsOfferTime.text = item.timeRange
         }
     }
 
@@ -43,18 +51,18 @@ class TicketsOffersAdapter() : RecyclerView.Adapter<TicketsOffersAdapter.ViewHol
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = offersList[position]
+        val item = ticketsOffersList[position]
         holder.bind(item, position)
     }
 
     override fun getItemCount(): Int {
-        return offersList.size
+        return ticketsOffersList.size
     }
 
-    fun updateList(newDataList: List<Offer>) {
-        val diffUtil = OffersDiffUtil(offersList, newDataList)
+    fun updateList(newDataList: List<TicketsOffer>) {
+        val diffUtil = TicketsOffersDiffUtil(ticketsOffersList, newDataList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
-        offersList = newDataList
+        ticketsOffersList = newDataList
         diffResult.dispatchUpdatesTo(this)
     }
 }

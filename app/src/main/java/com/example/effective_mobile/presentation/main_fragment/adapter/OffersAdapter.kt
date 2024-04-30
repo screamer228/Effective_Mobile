@@ -1,4 +1,4 @@
-package com.example.effective_mobile.presentation.main.adapter
+package com.example.effective_mobile.presentation.main_fragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.effective_mobile.databinding.ItemOfferBinding
-import com.example.effective_mobile.presentation.main.model.Offer
+import com.example.effective_mobile.presentation.main_fragment.model.Offer
 import com.example.effective_mobile.utils.OffersDiffUtil
 
 class OffersAdapter() : RecyclerView.Adapter<OffersAdapter.ViewHolder>() {

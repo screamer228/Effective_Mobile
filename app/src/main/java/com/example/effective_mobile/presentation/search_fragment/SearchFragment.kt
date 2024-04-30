@@ -1,4 +1,4 @@
-package com.example.effective_mobile.presentation
+package com.example.effective_mobile.presentation.search_fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.effective_mobile.R
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentSearchBinding
-import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModel
-import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModelFactory
+import com.example.effective_mobile.presentation.main_fragment.viewmodel.MainSharedViewModel
+import com.example.effective_mobile.presentation.main_fragment.viewmodel.MainSharedViewModelFactory
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

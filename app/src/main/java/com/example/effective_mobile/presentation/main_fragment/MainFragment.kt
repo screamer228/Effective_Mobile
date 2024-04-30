@@ -1,4 +1,4 @@
-package com.example.effective_mobile.presentation.main
+package com.example.effective_mobile.presentation.main_fragment
 
 import android.os.Bundle
 import android.text.Editable
@@ -14,10 +14,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.effective_mobile.CyrillicInputFilter
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentMainBinding
-import com.example.effective_mobile.presentation.main.adapter.OffersAdapter
-import com.example.effective_mobile.presentation.main.uistate.MainNavigationEvent
-import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModel
-import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModelFactory
+import com.example.effective_mobile.presentation.main_fragment.adapter.OffersAdapter
+import com.example.effective_mobile.presentation.main_fragment.uistate.MainNavigationEvent
+import com.example.effective_mobile.presentation.main_fragment.viewmodel.MainSharedViewModel
+import com.example.effective_mobile.presentation.main_fragment.viewmodel.MainSharedViewModelFactory
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -46,8 +46,6 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d("sharedViewModel check", "main fragment viewModel instance: $viewModel")
-
         binding.recyclerViewOffers.adapter = adapter
 
         binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())
@@ -63,7 +61,6 @@ class MainFragment : Fragment() {
                         MainFragmentDirections.actionMainFragmentToSearchFragment()
                     )
                 }
-                Log.d("sharedViewModel check", "main fragment collected")
             }
         }
 

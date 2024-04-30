@@ -9,8 +9,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.effective_mobile.R
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.ActivityHostBinding
-import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModel
-import com.example.effective_mobile.presentation.main.viewmodel.MainSharedViewModelFactory
+import com.example.effective_mobile.presentation.main_fragment.viewmodel.MainSharedViewModel
+import com.example.effective_mobile.presentation.main_fragment.viewmodel.MainSharedViewModelFactory
 import javax.inject.Inject
 
 class HostActivity : AppCompatActivity() {

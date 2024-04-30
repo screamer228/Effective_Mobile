@@ -1,6 +1,6 @@
-package com.example.effective_mobile.presentation.main.uistate
+package com.example.effective_mobile.presentation.main_fragment.uistate
 
-import com.example.effective_mobile.presentation.main.model.Offer
+import com.example.effective_mobile.presentation.main_fragment.model.Offer
 
 data class MainUiState(
     val inputFrom: String = "",
