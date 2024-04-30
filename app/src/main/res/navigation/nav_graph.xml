@@ -47,5 +47,10 @@
         android:id="@+id/countrySelectedFragment"
         android:name="com.example.effective_mobile.presentation.countryselected_fragment.CountrySelectedFragment"
         android:label="fragment_country_selected"
-        tools:layout="@layout/fragment_country_selected" />
+        tools:layout="@layout/fragment_country_selected" >
+        <argument
+            android:name="inputTo"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
 </navigation>

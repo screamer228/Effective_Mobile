@@ -15,7 +15,7 @@ class TicketsOffersRepositoryImpl @Inject constructor(
     private val ticketsOffersDtoMapper: TicketsOffersDtoMapper
 ) : TicketsOffersRepository {
 
-    override fun getTicketsOffers(): TicketsOffersDTO {
+    override suspend fun getTicketsOffers(): TicketsOffersDTO {
         val gson = Gson()
         val json = getJsonString(context, FILE_NAME)
         Log.d("json check", json)

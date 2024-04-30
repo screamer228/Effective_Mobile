@@ -24,20 +24,13 @@ class MainSharedViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
+//    private val _navigation =
+//        MutableStateFlow<MainNavigationEvent>(MainNavigationEvent.NoNavigation)
+//    val navigation: StateFlow<MainNavigationEvent> = _navigation.asStateFlow()
+
     init {
         getInputFromPrefs()
         getOffers()
-    }
-
-    private fun getInputFromPrefs() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val inputFrom = sharedPrefsRepository.getStringFromPrefs()
-            _uiState.value = _uiState.value.copy(inputFrom = inputFrom)
-        }
-    }
-
-    fun saveInputInPrefs() {
-        sharedPrefsRepository.saveStringInPrefs(uiState.value.inputFrom)
     }
 
     private fun getOffers() {
@@ -48,16 +41,43 @@ class MainSharedViewModel @Inject constructor(
         }
     }
 
-    fun setEditTextFromValue(inputString: String) {
-        _uiState.value = _uiState.value.copy(inputFrom = inputString)
-        Log.d("sharedViewModel check", "in uiState: ${uiState.value.inputFrom}")
+    private fun getInputFromPrefs() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val inputFrom = sharedPrefsRepository.getStringFromPrefs()
+            setInputFromInState(inputFrom)
+        }
     }
 
-    fun navigateToFragmentMain(event: MainNavigationEvent) {
-        _uiState.value = _uiState.value.copy(navigation = event)
+    fun saveInputInPrefs() {
+        viewModelScope.launch(Dispatchers.IO) {
+            sharedPrefsRepository.saveStringInPrefs(uiState.value.inputFrom)
+        }
+    }
+
+    fun setInputFromInState(inputString: String) {
+        _uiState.value = _uiState.value.copy(inputFrom = inputString)
+    }
+
+    fun setInputToInState(inputString: String) {
+        _uiState.value = _uiState.value.copy(inputTo = inputString)
+        Log.d("arg check", "setInputInState done -> $inputString")
+        Log.d("arg check", "in uiState: ${uiState.value.inputTo}")
     }
 
     fun navigateToFragmentSearch(event: MainNavigationEvent) {
+        setNavigationState(event)
+    }
+
+    fun navigateToFragmentCountrySelected(event: MainNavigationEvent) {
+        setNavigationState(event)
+    }
+
+    fun navigateToFragmentMain(event: MainNavigationEvent) {
+        setNavigationState(event)
+    }
+
+    private fun setNavigationState(event: MainNavigationEvent) {
         _uiState.value = _uiState.value.copy(navigation = event)
+//        _uiState.value = _uiState.value.copy(navigation = event)
     }
 }

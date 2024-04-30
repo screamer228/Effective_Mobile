@@ -2,7 +2,9 @@ package com.example.effective_mobile.presentation.countryselected_fragment.viewm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.effective_mobile.domain.SharedPrefsRepository
 import com.example.effective_mobile.domain.TicketsOffersRepository
+import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedNavigationEvent
 import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedUiState
 import com.example.effective_mobile.presentation.mapper.TicketsOfferMapper
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CountrySelectedViewModel @Inject constructor(
+    private val sharedPrefsRepository: SharedPrefsRepository,
     private val ticketsOffersRepository: TicketsOffersRepository,
     private val ticketsOfferMapper: TicketsOfferMapper
 ) : ViewModel() {
@@ -21,6 +24,7 @@ class CountrySelectedViewModel @Inject constructor(
     val uiState: StateFlow<CountrySelectedUiState> = _uiState.asStateFlow()
 
     init {
+        getInputFromPrefs()
         getTicketsOffers()
     }
 
@@ -32,4 +36,26 @@ class CountrySelectedViewModel @Inject constructor(
         }
     }
 
+    private fun getInputFromPrefs() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val inputFrom = sharedPrefsRepository.getStringFromPrefs()
+            _uiState.value = _uiState.value.copy(inputFrom = inputFrom)
+        }
+    }
+
+    fun setInputToInState(inputString: String) {
+        _uiState.value = _uiState.value.copy(inputTo = inputString)
+    }
+
+    fun navigateToFragmentCountrySelected(event: CountrySelectedNavigationEvent) {
+        handleNavigationEvent(event)
+    }
+
+    fun resetNavigation(event: CountrySelectedNavigationEvent) {
+        handleNavigationEvent(event)
+    }
+
+    private fun handleNavigationEvent(event: CountrySelectedNavigationEvent) {
+        _uiState.value = _uiState.value.copy(navigation = event)
+    }
 }

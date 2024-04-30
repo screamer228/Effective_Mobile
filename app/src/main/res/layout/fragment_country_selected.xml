@@ -38,7 +38,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fromET"
+                android:id="@+id/editText_from"
                 style="@style/style_button_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 app:dividerColor="@color/gray_5" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/toET"
+                android:id="@+id/editText_to"
                 style="@style/style_button_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

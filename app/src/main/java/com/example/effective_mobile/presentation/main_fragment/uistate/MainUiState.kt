@@ -6,5 +6,5 @@ data class MainUiState(
     val inputFrom: String = "",
     val inputTo: String = "",
     val offersList: List<Offer> = listOf(),
-    val navigation: MainNavigationEvent = MainNavigationEvent.ResetNavigation
+    val navigation: MainNavigationEvent = MainNavigationEvent.NoNavigation
 )

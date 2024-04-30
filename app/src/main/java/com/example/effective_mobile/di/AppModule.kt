@@ -23,9 +23,11 @@ class AppModule(val context: Context) {
 
     @Provides
     fun provideCountrySelectedViewModelFactory(
+        sharedPrefsRepository: SharedPrefsRepository,
         ticketsOffersRepository: TicketsOffersRepository
     ): CountrySelectedViewModelFactory {
         return CountrySelectedViewModelFactory(
+            sharedPrefsRepository,
             ticketsOffersRepository,
             ticketsOfferMapper = TicketsOfferMapper()
         )

@@ -45,50 +45,75 @@ class MainFragment : Fragment() {
 
         binding.recyclerViewOffers.adapter = adapter
 
-        binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())
-        binding.editTextTo.filters = arrayOf(CyrillicInputFilter())
+        inputFilters()
 
+        observers()
+
+        focusChangeListeners()
+    }
+
+    private fun observers() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
-                binding.editTextFrom.setText(uiState.inputFrom)
+                setTextToInputFrom(uiState.inputFrom)
                 adapter.updateList(uiState.offersList)
-                when (uiState.navigation) {
-                    is MainNavigationEvent.ResetNavigation -> findNavController().navigateUp()
-
-                    is MainNavigationEvent.ToFragmentSearch -> {
-                        viewModel.saveInputInPrefs()
-                        findNavController().navigate(
-                            MainFragmentDirections.actionMainFragmentToSearchFragment()
-                        )
-                    }
-                }
-            }
-        }
-
-        binding.editTextFrom.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                viewModel.setEditTextFromValue(binding.editTextFrom.text.toString())
-            }
-        }
-
-//        binding.editTextFrom.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-//            override fun afterTextChanged(s: Editable?) {
-//                viewModel.setEditTextFromValue(s.toString())
-//                Log.d("sharedViewModel check", "afterTextChanged triggered: $s")
-//            }
-//        })
-
-        binding.editTextTo.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                viewModel.navigateToFragmentSearch(MainNavigationEvent.ToFragmentSearch)
+                handleNavigationEvent(uiState.navigation)
             }
         }
     }
 
+    private fun focusChangeListeners() {
+        binding.editTextFrom.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                saveInputFromInState()
+            }
+        }
+
+        binding.editTextTo.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                navigateToFragmentSearch()
+            }
+        }
+    }
+
+    private fun handleNavigationEvent(navigation: MainNavigationEvent) {
+        when (navigation) {
+
+            is MainNavigationEvent.ToFragmentSearch -> {
+                viewModel.saveInputInPrefs()
+                findNavController().navigate(
+                    MainFragmentDirections.actionMainFragmentToSearchFragment()
+                )
+                resetNavigation()
+            }
+
+            else -> {}
+        }
+    }
+
+    private fun saveInputFromInState() {
+        viewModel.setInputFromInState(binding.editTextFrom.text.toString())
+    }
+
+    private fun setTextToInputFrom(inputFrom: String) {
+        binding.editTextFrom.setText(inputFrom)
+    }
+
+    private fun navigateToFragmentSearch() {
+        viewModel.navigateToFragmentSearch(MainNavigationEvent.ToFragmentSearch)
+    }
+
+    private fun resetNavigation() {
+        viewModel.navigateToFragmentMain(MainNavigationEvent.NoNavigation)
+    }
+
+    private fun inputFilters() {
+        binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())
+        binding.editTextTo.filters = arrayOf(CyrillicInputFilter())
+    }
+
     override fun onResume() {
+        resetNavigation()
         super.onResume()
-        viewModel.navigateToFragmentMain(MainNavigationEvent.ResetNavigation)
     }
 }

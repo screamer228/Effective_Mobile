@@ -9,7 +9,7 @@ class SharedPrefsRepositoryImpl @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) : SharedPrefsRepository {
 
-    override fun getStringFromPrefs(): String {
+    override suspend fun getStringFromPrefs(): String {
         return sharedPreferences.getString(
             BuildConfig.PREFS_TITLE_KEY,
             BuildConfig.PREFS_DEFAULT_VALUE
@@ -17,7 +17,7 @@ class SharedPrefsRepositoryImpl @Inject constructor(
             ?: BuildConfig.PREFS_DEFAULT_VALUE
     }
 
-    override fun saveStringInPrefs(value: String) {
+    override suspend fun saveStringInPrefs(value: String) {
         with(sharedPreferences.edit()) {
             putString(BuildConfig.PREFS_TITLE_KEY, value)
             apply()

@@ -2,5 +2,5 @@ package com.example.effective_mobile.presentation.countryselected_fragment.uista
 
 sealed class CountrySelectedNavigationEvent {
     data object ToFragmentTickets : CountrySelectedNavigationEvent()
-    data object ResetNavigation : CountrySelectedNavigationEvent()
+    data object NoNavigation : CountrySelectedNavigationEvent()
 }

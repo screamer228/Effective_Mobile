@@ -6,5 +6,5 @@ data class CountrySelectedUiState(
     val inputFrom: String = "",
     val inputTo: String = "",
     val ticketsOffersList: List<TicketsOffer> = listOf(),
-    val navigation: CountrySelectedNavigationEvent = CountrySelectedNavigationEvent.ResetNavigation
+    val navigation: CountrySelectedNavigationEvent = CountrySelectedNavigationEvent.NoNavigation
 )

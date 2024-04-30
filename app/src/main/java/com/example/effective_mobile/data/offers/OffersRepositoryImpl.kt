@@ -14,7 +14,7 @@ class OffersRepositoryImpl @Inject constructor(
     private val offersDtoMapper: OffersDtoMapper
 ) : OffersRepository {
 
-    override fun getOffers(): OffersDTO {
+    override suspend fun getOffers(): OffersDTO {
         val gson = Gson()
         val json = getJsonString(context, FILE_NAME)
         val response = gson.fromJson(json, OffersResponse::class.java)
