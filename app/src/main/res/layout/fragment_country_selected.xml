@@ -118,7 +118,7 @@
                 android:paddingHorizontal="12dp"
                 android:text="обратно"
                 android:textColor="@color/white"
-                app:cornerRadius="16dp"
+                app:cornerRadius="50dp"
                 app:icon="@drawable/ic_plus"
                 app:iconGravity="start"
                 app:iconTint="@color/white" />
@@ -133,18 +133,19 @@
                 android:paddingHorizontal="12dp"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                app:cornerRadius="16dp"
+                app:cornerRadius="50dp"
                 app:iconTint="@color/white"
-                tools:text="24 фев.сб" />
+                tools:text="24 фев,сб" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/countPassBtn"
                 style="@style/style_title_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
                 android:backgroundTint="@color/gray_3"
                 android:paddingHorizontal="12dp"
-                android:text="1,эконом"
+                android:text="@string/economy"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:cornerRadius="50dp"
@@ -160,10 +161,10 @@
                 android:layout_marginHorizontal="4dp"
                 android:backgroundTint="@color/gray_3"
                 android:paddingHorizontal="12dp"
-                android:text="фильтры"
+                android:text="@string/filters"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                app:cornerRadius="16dp"
+                app:cornerRadius="50dp"
                 app:icon="@drawable/ic_filter"
                 app:iconGravity="textStart"
                 app:iconTint="@color/white" />

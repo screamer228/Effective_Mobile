@@ -26,6 +26,20 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "PREFS_NAME", "\"sharedPreferences\"")
+            buildConfigField("String", "PREFS_TITLE_KEY", "\"prefsStringKey\"")
+            buildConfigField("String", "PREFS_DEFAULT_VALUE", "\"\"")
+        }
+        debug {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            buildConfigField("String", "PREFS_NAME", "\"sharedPreferences\"")
+            buildConfigField("String", "PREFS_TITLE_KEY", "\"prefsStringKey\"")
+            buildConfigField("String", "PREFS_DEFAULT_VALUE", "\"\"")
+
         }
     }
     compileOptions {
@@ -37,6 +51,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 

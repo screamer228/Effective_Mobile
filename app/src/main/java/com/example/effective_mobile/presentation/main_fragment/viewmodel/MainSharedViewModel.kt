@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.effective_mobile.domain.OffersRepository
+import com.example.effective_mobile.domain.SharedPrefsRepository
 import com.example.effective_mobile.presentation.main_fragment.uistate.MainNavigationEvent
 import com.example.effective_mobile.presentation.main_fragment.uistate.MainUiState
 import com.example.effective_mobile.presentation.mapper.OfferMapper
@@ -15,6 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainSharedViewModel @Inject constructor(
+    private val sharedPrefsRepository: SharedPrefsRepository,
     private val offersRepository: OffersRepository,
     private val offerMapper: OfferMapper
 ) : ViewModel() {
@@ -23,7 +25,19 @@ class MainSharedViewModel @Inject constructor(
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
     init {
+        getInputFromPrefs()
         getOffers()
+    }
+
+    private fun getInputFromPrefs() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val inputFrom = sharedPrefsRepository.getStringFromPrefs()
+            _uiState.value = _uiState.value.copy(inputFrom = inputFrom)
+        }
+    }
+
+    fun saveInputInPrefs() {
+        sharedPrefsRepository.saveStringInPrefs(uiState.value.inputFrom)
     }
 
     private fun getOffers() {

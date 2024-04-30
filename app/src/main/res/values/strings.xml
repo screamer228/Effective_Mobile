@@ -14,4 +14,6 @@
     <string name="to_turkey">Куда - Турция</string>
     <string name="musically_fly_away">Музыкально отлететь</string>
     <string name="search_for_cheap_flights">Поиск дешевых авиабилетов</string>
+    <string name="filters">фильтры</string>
+    <string name="economy">1,эконом</string>
 </resources>
