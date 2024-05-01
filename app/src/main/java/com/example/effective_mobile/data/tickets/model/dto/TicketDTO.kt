@@ -4,9 +4,9 @@ data class TicketDTO(
     val id: Int,
     val badge: String?,
     val price: String,
-    val timeRange: String,
+    val departureDate: String,
+    val arrivalDate: String,
     val departureAirport: String,
     val arrivalAirport: String,
-    val travelTime: String,
     val hasTransfer: Boolean
 )

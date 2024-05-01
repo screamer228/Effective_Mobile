@@ -30,7 +30,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="60dp"
         android:background="@color/black"
         app:menu="@menu/bottom_nav_menu"
         app:itemTextAppearanceInactive="@style/style_tab_text"

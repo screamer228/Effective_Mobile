@@ -101,8 +101,10 @@ class SearchFragment : Fragment() {
     private fun inputActionListeners() {
         binding.editTextTo.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                saveInputToInState()
-                navigateToFragmentCountrySelected()
+                if (binding.editTextTo.text?.isNotEmpty() == true) {
+                    saveInputToInState()
+                    navigateToFragmentCountrySelected()
+                }
                 true
             } else {
                 false

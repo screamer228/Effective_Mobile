@@ -1,7 +1,6 @@
 package com.example.effective_mobile.presentation.countryselected_fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.effective_mobile.CyrillicInputFilter
+import com.example.effective_mobile.R
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentCountrySelectedBinding
 import com.example.effective_mobile.host.HostActivity
@@ -18,6 +18,7 @@ import com.example.effective_mobile.presentation.countryselected_fragment.adapte
 import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedNavigationEvent
 import com.example.effective_mobile.presentation.countryselected_fragment.viewmodel.CountrySelectedViewModel
 import com.example.effective_mobile.presentation.countryselected_fragment.viewmodel.CountrySelectedViewModelFactory
+import com.example.effective_mobile.utils.StringsUtils.stringsToRow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -58,22 +59,36 @@ class CountrySelectedFragment : Fragment() {
 
         inputFilters()
 
-        binding.buttonSeeAllTickets.setOnClickListener {
-            navigateToFragmentTickets()
-        }
+        clickListeners()
 
+        observers()
+
+    }
+
+    private fun observers() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
                 binding.editTextFrom.setText(uiState.inputFrom)
                 binding.editTextTo.setText(uiState.inputTo)
-                Log.d("json check", "in uiState: ${uiState.ticketsOffersList.first().title}")
                 adapter.updateList(uiState.ticketsOffersList)
                 handleNavigationEvent(
                     uiState.navigation,
-                    "${uiState.inputFrom}-${uiState.inputTo}",
-                    binding.dateBtn.text.toString()
+                    stringsToRow(uiState.inputFrom, uiState.inputTo, "-"),
+                    stringsToRow(
+                        binding.dateBtn.text.toString(),
+                        binding.countPassBtn.text.first().toString(),
+                        ", "
+                    ) + getString(
+                        R.string.passenger
+                    )
                 )
             }
+        }
+    }
+
+    private fun clickListeners() {
+        binding.buttonSeeAllTickets.setOnClickListener {
+            navigateToFragmentTickets()
         }
     }
 

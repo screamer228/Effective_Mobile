@@ -1,16 +1,20 @@
 package com.example.effective_mobile.presentation.tickets_fragment.adapter
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.effective_mobile.R
 import com.example.effective_mobile.databinding.ItemTicketBinding
 import com.example.effective_mobile.presentation.tickets_fragment.model.Ticket
 import com.example.effective_mobile.utils.TicketsDiffUtil
 
-class TicketsAdapter : RecyclerView.Adapter<TicketsAdapter.ViewHolder>() {
+class TicketsAdapter(private val context: Context) :
+    RecyclerView.Adapter<TicketsAdapter.ViewHolder>() {
 
     private var ticketsList: List<Ticket> = listOf()
 
@@ -19,15 +23,16 @@ class TicketsAdapter : RecyclerView.Adapter<TicketsAdapter.ViewHolder>() {
         fun bind(item: Ticket) {
             if (item.badge != null) {
                 binding.itemBadgeText.text = item.badge
-            } else {
-                binding.itemBadgeBackground.visibility = View.INVISIBLE
-            }
-            binding.itemPrice.text = item.price
+            } else binding.itemBadgeBackground.visibility = View.INVISIBLE
+            binding.itemPrice.text = context.getString(R.string.ps_rubles, item.price)
             binding.itemTimeRange.text = item.timeRange
             binding.itemAirportDeparture.text = item.departureAirport
             binding.itemAirportArrival.text = item.arrivalAirport
-            binding.itemTravelTime.text = item.travelTime
+            binding.itemTravelTime.text = context.getString(R.string.ps_on_the_way, item.travelTime)
             binding.itemWithoutTransfer.isVisible = !item.hasTransfer
+//            if (!item.hasTransfer) {
+//                binding.itemWithoutTransfer.visibility = View.VISIBLE
+//            } else binding.itemWithoutTransfer.visibility = View.INVISIBLE
         }
     }
 
@@ -39,6 +44,7 @@ class TicketsAdapter : RecyclerView.Adapter<TicketsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = ticketsList[position]
+        Log.d("transfer check", "in adapter: ${ticketsList.first().hasTransfer}")
         holder.bind(item)
     }
 

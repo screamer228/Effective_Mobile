@@ -6,33 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+    android:paddingHorizontal="@dimen/default_padding_margin"
     tools:context=".presentation.tickets_fragment.TicketsFragment">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/heistCardView"
+        android:id="@+id/cardView_titles"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/gray_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/goBackIV"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/button_back"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="4dp"
         android:elevation="2dp"
         android:src="@drawable/ic_arrow_left"
-        app:layout_constraintBottom_toBottomOf="@id/heistCardView"
-        app:layout_constraintStart_toStartOf="@id/heistCardView"
-        app:layout_constraintTop_toTopOf="@id/heistCardView"
+        app:layout_constraintBottom_toBottomOf="@id/cardView_titles"
+        app:layout_constraintStart_toStartOf="@id/cardView_titles"
+        app:layout_constraintTop_toTopOf="@id/cardView_titles"
         app:tint="@color/blue" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/townsTitle"
+        style="@style/style_title_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -40,89 +41,94 @@
         android:elevation="2dp"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/goBackIV"
-        app:layout_constraintTop_toTopOf="@id/heistCardView"
+        app:layout_constraintStart_toEndOf="@id/button_back"
+        app:layout_constraintTop_toTopOf="@id/cardView_titles"
         tools:text="Москва-Сочи" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/dateTitle"
+        style="@style/style_title_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:elevation="2dp"
         android:textColor="@color/gray_6"
-        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/townsTitle"
         app:layout_constraintTop_toBottomOf="@id/townsTitle"
         tools:text="23 февраля, 1 пассажир" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ticketsRV"
+        android:id="@+id/recyclerView_tickets"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:clipToPadding="false"
+        android:paddingBottom="180dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/heistCardView"
+        app:layout_constraintTop_toBottomOf="@id/cardView_titles"
         tools:itemCount="5"
         tools:listitem="@layout/item_ticket" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/floatFiltersCV"
+        android:id="@+id/cardView_blue"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginHorizontal="100dp"
-        android:layout_marginBottom="16sp"
+        android:layout_marginHorizontal="90dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/blue"
         app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/icFilter"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView_filter"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="8dp"
         android:elevation="2dp"
         android:src="@drawable/ic_filter"
-        app:layout_constraintBottom_toBottomOf="@id/floatFiltersCV"
-        app:layout_constraintStart_toStartOf="@id/floatFiltersCV"
-        app:layout_constraintTop_toTopOf="@id/floatFiltersCV" />
+        app:layout_constraintBottom_toBottomOf="@id/cardView_blue"
+        app:layout_constraintStart_toStartOf="@id/cardView_blue"
+        app:layout_constraintTop_toTopOf="@id/cardView_blue" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/style_title_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:elevation="2dp"
-        android:text="Фильтр"
+        android:text="@string/filer"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/icFilter"
-        app:layout_constraintTop_toTopOf="@id/icFilter" />
+        app:layout_constraintBottom_toBottomOf="@id/cardView_blue"
+        app:layout_constraintStart_toEndOf="@id/imageView_filter"
+        app:layout_constraintTop_toTopOf="@id/cardView_blue" />
 
-    <ImageView
-        android:id="@+id/icGraph"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView_graph"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:elevation="2dp"
         android:src="@drawable/ic_graph"
-        app:layout_constraintBottom_toBottomOf="@id/floatFiltersCV"
-        app:layout_constraintEnd_toStartOf="@id/graphTV"
-        app:layout_constraintTop_toTopOf="@id/floatFiltersCV" />
+        app:layout_constraintBottom_toBottomOf="@id/cardView_blue"
+        app:layout_constraintEnd_toStartOf="@id/textView_graph"
+        app:layout_constraintTop_toTopOf="@id/cardView_blue" />
 
-    <TextView
-        android:id="@+id/graphTV"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_graph"
+        style="@style/style_title_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="12dp"
         android:elevation="2dp"
-        android:text="График цен"
+        android:text="@string/price_graph"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/floatFiltersCV"
-        app:layout_constraintEnd_toEndOf="@id/floatFiltersCV"
-        app:layout_constraintTop_toTopOf="@id/floatFiltersCV" />
+        app:layout_constraintBottom_toBottomOf="@id/cardView_blue"
+        app:layout_constraintEnd_toEndOf="@id/cardView_blue"
+        app:layout_constraintTop_toTopOf="@id/cardView_blue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

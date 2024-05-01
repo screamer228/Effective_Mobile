@@ -25,7 +25,7 @@ class TicketsFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: TicketsViewModelFactory
     private lateinit var viewModel: TicketsViewModel
-    private val adapter: TicketsAdapter = TicketsAdapter()
+    private lateinit var adapter: TicketsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,10 +44,11 @@ class TicketsFragment : Fragment() {
 
         viewModel.setTitles(args.townsTitle, args.dateTitle)
 
-        binding.ticketsRV.adapter = adapter
+        adapter = TicketsAdapter(requireContext())
+        binding.recyclerViewTickets.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.uiState.collect {uiState ->
+            viewModel.uiState.collect { uiState ->
                 binding.townsTitle.text = uiState.townsTitle
                 binding.dateTitle.text = uiState.dateTitle
                 adapter.updateList(uiState.ticketsList)
