@@ -1,4 +1,4 @@
-package com.example.effective_mobile.presentation
+package com.example.effective_mobile.presentation.plug_fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.effective_mobile.R
 
-class SubsFragment : Fragment() {
+class MapFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subs, container, false)
+        return inflater.inflate(R.layout.fragment_map, container, false)
     }
 }

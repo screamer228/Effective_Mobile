@@ -41,4 +41,12 @@
     <string name="return_ticket">обратно</string>
     <string name="direct_flights">Прямые рейсы</string>
     <string name="price_subscription">Подписка на цену</string>
+    <string name="hard_route">Сложный \nМаршрут</string>
+    <string name="anywhere">Куда угодно</string>
+    <string name="weekends">Выходные</string>
+    <string name="hot_tickets">Горячие\nбилеты</string>
+    <string name="popular_direction">Популярное направление</string>
+    <string name="istanbul">Стамбул</string>
+    <string name="sochi">Сочи</string>
+    <string name="phuket">Пхукет</string>
 </resources>

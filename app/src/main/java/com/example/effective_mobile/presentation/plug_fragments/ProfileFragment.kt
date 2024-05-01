@@ -1,4 +1,4 @@
-package com.example.effective_mobile.presentation
+package com.example.effective_mobile.presentation.plug_fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

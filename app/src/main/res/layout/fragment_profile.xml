@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ProfileFragment">
+    android:background="@color/black"
+    tools:context=".presentation.plug_fragments.ProfileFragment">
 
     <com.google.android.material.textview.MaterialTextView
+        style="@style/style_title_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/profile_fragment"
-        android:textSize="24sp" />
+        android:textColor="@color/white" />
 
 </FrameLayout>
