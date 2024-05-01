@@ -13,7 +13,7 @@
         android:layout_height="90dp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="@color/gray_4"
         app:cardCornerRadius="16dp"
         app:contentPadding="8dp"
@@ -82,7 +82,7 @@
             app:tint="@color/white" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/clearIV"
+            android:id="@+id/imageView_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
@@ -94,7 +94,7 @@
     </androidx.cardview.widget.CardView>
 
     <HorizontalScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/scrollView_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -112,14 +112,14 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/backTicketBtn"
+                android:id="@+id/button_returnTicket"
                 style="@style/style_title_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:backgroundTint="@color/gray_3"
                 android:paddingHorizontal="12dp"
-                android:text="обратно"
+                android:text="@string/return_ticket"
                 android:textColor="@color/white"
                 app:cornerRadius="50dp"
                 app:icon="@drawable/ic_plus"
@@ -127,7 +127,7 @@
                 app:iconTint="@color/white" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/dateBtn"
+                android:id="@+id/button_date"
                 style="@style/style_title_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                 tools:text="24 фев,сб" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/countPassBtn"
+                android:id="@+id/button_passenger_count"
                 style="@style/style_title_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                 app:iconTint="@color/white" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/filtersBtn"
+                android:id="@+id/button_filters"
                 style="@style/style_title_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,16 +175,16 @@
     </HorizontalScrollView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/lowerCardView"
+        android:id="@+id/cardView_directFlights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/gray_1"
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollView">
+        app:layout_constraintTop_toBottomOf="@id/scrollView_buttons">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -197,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Прямые рейсы"
+                android:text="@string/direct_flights"
                 android:textColor="@color/white" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -222,7 +222,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/blue"
         android:text="@string/see_all_tickets"
         android:textColor="@color/white"
@@ -230,13 +230,13 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lowerCardView" />
+        app:layout_constraintTop_toBottomOf="@id/cardView_directFlights" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="51dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/gray_2"
         app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -261,7 +261,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Подписка на цену"
+                android:text="@string/price_subscription"
                 android:textColor="@color/white" />
 
         </LinearLayout>

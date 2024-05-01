@@ -113,7 +113,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun clickListeners() {
-        binding.clearIV.setOnClickListener {
+        binding.imageViewClear.setOnClickListener {
             binding.editTextTo.text?.clear()
         }
     }

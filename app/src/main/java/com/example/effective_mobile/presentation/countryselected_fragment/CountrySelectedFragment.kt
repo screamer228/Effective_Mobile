@@ -83,8 +83,8 @@ class CountrySelectedFragment : Fragment() {
                     uiState.navigation,
                     stringsToRow(uiState.inputFrom, uiState.inputTo, getString(R.string.dash)),
                     stringsToRow(
-                        binding.dateBtn.text.toString(),
-                        binding.countPassBtn.text.first().toString(),
+                        binding.buttonDate.text.toString(),
+                        binding.buttonPassengerCount.text.first().toString(),
                         getString(R.string.comma_space)
                     ) + getString(
                         R.string.passenger
@@ -99,17 +99,34 @@ class CountrySelectedFragment : Fragment() {
             navigateBack()
         }
 
-        binding.backTicketBtn.setOnClickListener {
+        binding.imageViewSwap.setOnClickListener {
+            swapInputs()
+        }
+
+        binding.imageViewClear.setOnClickListener {
+            binding.editTextTo.text?.clear()
+        }
+
+        binding.buttonReturnTicket.setOnClickListener {
             openDatePickerDialog(false)
         }
 
-        binding.dateBtn.setOnClickListener {
+        binding.buttonDate.setOnClickListener {
             openDatePickerDialog(true)
         }
 
         binding.buttonSeeAllTickets.setOnClickListener {
             navigateToFragmentTickets()
         }
+    }
+
+    private fun swapInputs() {
+        val inputFrom = binding.editTextFrom.text.toString()
+        val inputTo = binding.editTextTo.text.toString()
+        binding.editTextFrom.setText(inputTo)
+        binding.editTextTo.setText(inputFrom)
+        viewModel.setInputFromInState(inputTo)
+        viewModel.setInputToInState(inputFrom)
     }
 
     private fun handleNavigationEvent(
@@ -158,7 +175,7 @@ class CountrySelectedFragment : Fragment() {
     private fun setCurrentDate() {
         val currentDate = Calendar.getInstance().time
         val formattedDate = formatDate(currentDate)
-        binding.dateBtn.text = formattedDate
+        binding.buttonDate.text = formattedDate
     }
 
     private fun openDatePickerDialog(isNeedSetSelectedDate: Boolean) {
@@ -178,7 +195,7 @@ class CountrySelectedFragment : Fragment() {
                 val selectedDate = formatDate(selectedDayOfMonth, selectedMonth)
 
                 if (isNeedSetSelectedDate) {
-                    binding.dateBtn.text = selectedDate
+                    binding.buttonDate.text = selectedDate
                 }
             },
             year,

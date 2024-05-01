@@ -38,4 +38,7 @@
     <string name="dash">-</string>
     <string name="comma_space">", "</string>
     <string name="SimpleDateFormat">"dd MMMM"</string>
+    <string name="return_ticket">обратно</string>
+    <string name="direct_flights">Прямые рейсы</string>
+    <string name="price_subscription">Подписка на цену</string>
 </resources>

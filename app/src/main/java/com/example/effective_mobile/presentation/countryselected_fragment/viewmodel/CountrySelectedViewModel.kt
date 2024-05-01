@@ -39,12 +39,16 @@ class CountrySelectedViewModel @Inject constructor(
     private fun getInputFromPrefs() {
         viewModelScope.launch(Dispatchers.IO) {
             val inputFrom = sharedPrefsRepository.getStringFromPrefs()
-            _uiState.value = _uiState.value.copy(inputFrom = inputFrom)
+            setInputFromInState(inputFrom)
         }
     }
 
-    fun setInputToInState(inputString: String) {
-        _uiState.value = _uiState.value.copy(inputTo = inputString)
+    fun setInputFromInState(inputFrom: String) {
+        _uiState.value = _uiState.value.copy(inputFrom = inputFrom)
+    }
+
+    fun setInputToInState(inputTo: String) {
+        _uiState.value = _uiState.value.copy(inputTo = inputTo)
     }
 
     fun setNavigationState(event: CountrySelectedNavigationEvent) {

@@ -57,18 +57,6 @@ class MainSharedViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(inputTo = inputString)
     }
 
-//    fun navigateToFragmentSearch(event: MainNavigationEvent) {
-//        setNavigationState(event)
-//    }
-//
-//    fun navigateToFragmentCountrySelected(event: MainNavigationEvent) {
-//        setNavigationState(event)
-//    }
-//
-//    fun resetNavigation() {
-//        setNavigationState(MainNavigationEvent.NoNavigation)
-//    }
-
     fun setNavigationState(event: MainNavigationEvent) {
         _uiState.value = _uiState.value.copy(navigation = event)
     }

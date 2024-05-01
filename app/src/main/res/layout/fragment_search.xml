@@ -82,7 +82,7 @@
                     android:textColorHint="@color/gray_6" />
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/clearIV"
+                    android:id="@+id/imageView_clear"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
