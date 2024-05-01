@@ -42,24 +42,19 @@
                 style="@style/style_button_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:background="@color/gray_4"
                 android:hint="@string/from_moscow"
                 android:inputType="text"
                 android:textColor="@color/white"
                 android:textColorHint="@color/gray_6" />
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginVertical="8dp"
-                app:dividerColor="@color/gray_5" />
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_to"
                 style="@style/style_button_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="7dp"
                 android:background="@color/gray_4"
                 android:hint="@string/to_turkey"
                 android:inputType="text"
@@ -68,14 +63,22 @@
 
         </LinearLayout>
 
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
+            app:dividerColor="@color/gray_5" />
+
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/swipeIV"
+            android:id="@+id/imageView_swap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/ic_arrows_change"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_arrows_swap"
             app:tint="@color/white" />
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -83,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp"
             android:src="@drawable/ic_close"
             app:tint="@color/white" />
@@ -203,20 +206,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_tickets_offer" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="4dp"
-                android:backgroundTint="@color/gray_1"
-                android:text="Показать все"
-                android:textColor="@color/dark_blue"
-                android:textSize="21sp" />
 
         </LinearLayout>
 

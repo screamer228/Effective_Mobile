@@ -22,17 +22,14 @@ class TicketsAdapter(private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Ticket) {
             if (item.badge != null) {
-                binding.itemBadgeText.text = item.badge
-            } else binding.itemBadgeBackground.visibility = View.INVISIBLE
-            binding.itemPrice.text = context.getString(R.string.ps_rubles, item.price)
-            binding.itemTimeRange.text = item.timeRange
-            binding.itemAirportDeparture.text = item.departureAirport
-            binding.itemAirportArrival.text = item.arrivalAirport
-            binding.itemTravelTime.text = context.getString(R.string.ps_on_the_way, item.travelTime)
-            binding.itemWithoutTransfer.isVisible = !item.hasTransfer
-//            if (!item.hasTransfer) {
-//                binding.itemWithoutTransfer.visibility = View.VISIBLE
-//            } else binding.itemWithoutTransfer.visibility = View.INVISIBLE
+                binding.ticketBadgeText.text = item.badge
+            } else binding.ticketBadgeBackground.visibility = View.INVISIBLE
+            binding.ticketPrice.text = context.getString(R.string.ps_rubles, item.price)
+            binding.ticketTimeRange.text = item.timeRange
+            binding.ticketAirportDeparture.text = item.departureAirport
+            binding.ticketAirportArrival.text = item.arrivalAirport
+            binding.ticketTravelTime.text = context.getString(R.string.ps_on_the_way, item.travelTime)
+            binding.ticketWithoutTransfer.isVisible = !item.hasTransfer
         }
     }
 

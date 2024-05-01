@@ -8,7 +8,7 @@
     android:background="@color/black">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/ticket_cardView"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_marginTop="24dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/item_badgeBackground"
+        android:id="@+id/ticket_badgeBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/item_badgeText"
+            android:id="@+id/ticket_badgeText"
             style="@style/style_title_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/item_price"
+        android:id="@+id/ticket_price"
         style="@style/style_title_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,23 +48,23 @@
         android:layout_marginTop="16dp"
         android:elevation="2dp"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/cardView"
-        app:layout_constraintTop_toBottomOf="@id/item_badgeBackground"
+        app:layout_constraintStart_toStartOf="@id/ticket_cardView"
+        app:layout_constraintTop_toBottomOf="@id/ticket_badgeBackground"
         tools:text="8 558 Р" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/item_icon"
+        android:id="@+id/ticket_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/red"
         app:cardCornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="@id/cardView"
-        app:layout_constraintTop_toBottomOf="@id/item_price" />
+        app:layout_constraintStart_toStartOf="@id/ticket_cardView"
+        app:layout_constraintTop_toBottomOf="@id/ticket_price" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/item_timeRange"
+        android:id="@+id/ticket_timeRange"
         style="@style/style_title_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,24 +72,24 @@
         android:layout_marginTop="16dp"
         android:elevation="2dp"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/item_icon"
-        app:layout_constraintTop_toBottomOf="@id/item_price"
+        app:layout_constraintStart_toEndOf="@id/ticket_icon"
+        app:layout_constraintTop_toBottomOf="@id/ticket_price"
         tools:text="03:15 - 07:10" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/item_airportDeparture"
+        android:id="@+id/ticket_airportDeparture"
         style="@style/style_title_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:elevation="2dp"
         android:textColor="@color/gray_6"
-        app:layout_constraintStart_toStartOf="@id/item_timeRange"
-        app:layout_constraintTop_toBottomOf="@id/item_timeRange"
+        app:layout_constraintStart_toStartOf="@id/ticket_timeRange"
+        app:layout_constraintTop_toBottomOf="@id/ticket_timeRange"
         tools:text="VKO" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/item_airportArrival"
+        android:id="@+id/ticket_airportArrival"
         style="@style/style_title_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,31 +97,31 @@
         android:elevation="2dp"
         android:layout_marginEnd="8dp"
         android:textColor="@color/gray_6"
-        app:layout_constraintEnd_toEndOf="@id/item_timeRange"
-        app:layout_constraintTop_toBottomOf="@id/item_timeRange"
+        app:layout_constraintEnd_toEndOf="@id/ticket_timeRange"
+        app:layout_constraintTop_toBottomOf="@id/ticket_timeRange"
         tools:text="VKO" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/item_travelTime"
+        android:id="@+id/ticket_travelTime"
         style="@style/style_text_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:elevation="2dp"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/item_timeRange"
-        app:layout_constraintTop_toTopOf="@id/item_timeRange"
-        tools:text="4ч в пути " />
+        app:layout_constraintStart_toEndOf="@id/ticket_timeRange"
+        app:layout_constraintTop_toTopOf="@id/ticket_timeRange"
+        tools:text="4ч в пути" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/item_withoutTransfer"
+        android:id="@+id/ticket_withoutTransfer"
         style="@style/style_text_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="2dp"
         android:text="@string/without_transfer"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/item_travelTime"
-        app:layout_constraintTop_toTopOf="@id/item_timeRange" />
+        app:layout_constraintStart_toEndOf="@id/ticket_travelTime"
+        app:layout_constraintTop_toTopOf="@id/ticket_timeRange" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

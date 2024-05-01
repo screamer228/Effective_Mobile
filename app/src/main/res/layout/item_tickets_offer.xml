@@ -60,6 +60,7 @@
         tools:text="07:00 09:10 10:00 11:00 12:00 13:00" />
     
     <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/ticketsOffer_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         app:dividerColor="@color/gray_5"

@@ -2,6 +2,7 @@ package com.example.effective_mobile.presentation.countryselected_fragment.adapt
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -39,8 +40,11 @@ class TicketsOffersAdapter(private val context: Context) :
                 )
             )
             binding.ticketsOfferTitle.text = item.title
-            binding.ticketsOfferPrice.text = item.price
+            binding.ticketsOfferPrice.text = context.getString(R.string.ps_rubles, item.price)
             binding.ticketsOfferTime.text = item.timeRange
+            if (position == (itemCount - 1)) {
+                binding.ticketsOfferDivider.visibility = View.INVISIBLE
+            }
         }
     }
 

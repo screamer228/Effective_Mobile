@@ -33,7 +33,7 @@ object StringsUtils {
         val reversed = input.reversed()
         val result = StringBuilder()
 
-        for (i in 0 until reversed.length) {
+        for (i in reversed.indices) {
             if (i > 0 && i % 3 == 0) {
                 result.append(" ")
             }

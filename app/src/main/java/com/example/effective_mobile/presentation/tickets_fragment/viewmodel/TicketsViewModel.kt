@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.effective_mobile.domain.repository.TicketsRepository
 import com.example.effective_mobile.presentation.tickets_fragment.mapper.TicketsMapper
+import com.example.effective_mobile.presentation.tickets_fragment.uistate.TicketsNavigationEvent
 import com.example.effective_mobile.presentation.tickets_fragment.uistate.TicketsUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,4 +38,7 @@ class TicketsViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(dateTitle = dateTitle)
     }
 
+    fun setNavigationState(event: TicketsNavigationEvent) {
+        _uiState.value = _uiState.value.copy(navigation = event)
+    }
 }

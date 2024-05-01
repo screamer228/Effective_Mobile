@@ -18,9 +18,9 @@
     <string name="economy">1,эконом</string>
     <string name="ps_rubles">%1$s ₽</string>
     <string name="ps_on_the_way">%1$s в пути</string>
-    <string name="without_transfer">/ Без пересадок</string>
+    <string name="without_transfer">\u0020/ Без пересадок</string>
     <string name="see_all_tickets">Посмотреть все билеты</string>
-    <string name="passenger"> пассажир</string>
+    <string name="passenger">\u0020пассажир</string>
     <string name="filer">Фильтр</string>
     <string name="price_graph">График цен</string>
     <string name="January">января</string>

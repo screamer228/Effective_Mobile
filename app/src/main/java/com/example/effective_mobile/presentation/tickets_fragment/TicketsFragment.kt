@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentTicketsBinding
 import com.example.effective_mobile.presentation.tickets_fragment.adapter.TicketsAdapter
+import com.example.effective_mobile.presentation.tickets_fragment.uistate.TicketsNavigationEvent
 import com.example.effective_mobile.presentation.tickets_fragment.viewmodel.TicketsViewModel
 import com.example.effective_mobile.presentation.tickets_fragment.viewmodel.TicketsViewModelFactory
 import kotlinx.coroutines.launch
@@ -47,6 +49,8 @@ class TicketsFragment : Fragment() {
         adapter = TicketsAdapter(requireContext())
         binding.recyclerViewTickets.adapter = adapter
 
+        clickListeners()
+
         observers()
     }
 
@@ -56,7 +60,34 @@ class TicketsFragment : Fragment() {
                 binding.townsTitle.text = uiState.townsTitle
                 binding.dateTitle.text = uiState.dateTitle
                 adapter.updateList(uiState.ticketsList)
+                handleNavigationEvent(uiState.navigation)
             }
         }
+    }
+
+    private fun clickListeners() {
+        binding.buttonBack.setOnClickListener {
+            navigateBack()
+        }
+    }
+
+    private fun handleNavigationEvent(navigation: TicketsNavigationEvent) {
+        when (navigation) {
+
+            is TicketsNavigationEvent.NavigateBack -> {
+                findNavController().popBackStack()
+                resetNavigation()
+            }
+
+            else -> {}
+        }
+    }
+
+    private fun navigateBack() {
+        viewModel.setNavigationState(TicketsNavigationEvent.NavigateBack)
+    }
+
+    private fun resetNavigation() {
+        viewModel.setNavigationState(TicketsNavigationEvent.NoNavigation)
     }
 }
