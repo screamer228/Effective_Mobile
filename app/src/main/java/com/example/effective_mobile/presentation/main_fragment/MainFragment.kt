@@ -23,7 +23,7 @@ class MainFragment : Fragment() {
 
     private lateinit var _binding: FragmentMainBinding
     private val binding get() = _binding
-    private val adapter: OffersAdapter = OffersAdapter()
+    private lateinit var adapter: OffersAdapter
 
     @Inject
     lateinit var viewModelFactory: MainSharedViewModelFactory
@@ -46,6 +46,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        adapter = OffersAdapter(requireContext())
         binding.recyclerViewOffers.adapter = adapter
 
         inputFilters()

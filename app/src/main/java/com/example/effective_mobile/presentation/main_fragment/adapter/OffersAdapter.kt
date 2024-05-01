@@ -1,15 +1,17 @@
 package com.example.effective_mobile.presentation.main_fragment.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.effective_mobile.R
 import com.example.effective_mobile.databinding.ItemOfferBinding
 import com.example.effective_mobile.presentation.main_fragment.model.Offer
 import com.example.effective_mobile.utils.OffersDiffUtil
 
-class OffersAdapter() : RecyclerView.Adapter<OffersAdapter.ViewHolder>() {
+class OffersAdapter(private val context: Context) : RecyclerView.Adapter<OffersAdapter.ViewHolder>() {
 
     private var offersList: List<Offer> = listOf()
 
@@ -19,7 +21,7 @@ class OffersAdapter() : RecyclerView.Adapter<OffersAdapter.ViewHolder>() {
             binding.offerImage.load(item.imageUrl)
             binding.offerTitle.text = item.title
             binding.offerTown.text = item.town
-            binding.offerPrice.text = item.price
+            binding.offerPrice.text = context.getString(R.string.from_ps_rubles, item.price)
         }
     }
 
