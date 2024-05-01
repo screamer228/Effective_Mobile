@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.effective_mobile.R
-import com.example.effective_mobile.databinding.ItemTicketsOffersBinding
+import com.example.effective_mobile.databinding.ItemTicketsOfferBinding
 import com.example.effective_mobile.presentation.countryselected_fragment.model.TicketsOffer
 import com.example.effective_mobile.utils.TicketsOffersDiffUtil
 
@@ -16,7 +16,7 @@ class TicketsOffersAdapter(private val context: Context) :
 
     private var ticketsOffersList: List<TicketsOffer> = listOf()
 
-    inner class ViewHolder(private val binding: ItemTicketsOffersBinding) :
+    inner class ViewHolder(private val binding: ItemTicketsOfferBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TicketsOffer, position: Int) {
             val iconColor = when (position) {
@@ -46,7 +46,7 @@ class TicketsOffersAdapter(private val context: Context) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemTicketsOffersBinding.inflate(inflater, parent, false)
+        val binding = ItemTicketsOfferBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }
 

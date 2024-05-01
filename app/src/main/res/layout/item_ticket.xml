@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="@color/black">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/gray_1"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_badgeBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/blue"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/item_badgeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="Самый удобный"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:elevation="2dp"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/cardView"
+        app:layout_constraintTop_toBottomOf="@id/item_badgeBackground"
+        tools:text="8 558 Р" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/redCircle"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/red"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintStart_toStartOf="@id/cardView"
+        app:layout_constraintTop_toBottomOf="@id/item_price" />
+
+    <TextView
+        android:id="@+id/item_timeRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:elevation="2dp"
+        android:text="03:15 - 07:10"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/redCircle"
+        app:layout_constraintTop_toBottomOf="@id/item_price" />
+
+    <TextView
+        android:id="@+id/item_airportDeparture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:textColor="@color/gray_6"
+        app:layout_constraintStart_toStartOf="@id/item_timeRange"
+        app:layout_constraintTop_toBottomOf="@id/item_timeRange"
+        tools:text="VKO" />
+
+    <TextView
+        android:id="@+id/item_airportArrival"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:textColor="@color/gray_6"
+        app:layout_constraintEnd_toEndOf="@id/item_timeRange"
+        app:layout_constraintTop_toBottomOf="@id/item_timeRange"
+        tools:text="VKO" />
+
+    <TextView
+        android:id="@+id/item_travelTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:elevation="2dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/item_timeRange"
+        app:layout_constraintTop_toTopOf="@id/item_timeRange"
+        tools:text="4ч в пути " />
+
+    <TextView
+        android:id="@+id/item_withoutTransfer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/item_travelTime"
+        app:layout_constraintTop_toTopOf="@id/item_timeRange"
+        tools:text="/ Без пересадок" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

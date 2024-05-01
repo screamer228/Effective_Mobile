@@ -2,11 +2,11 @@ package com.example.effective_mobile.presentation.countryselected_fragment.viewm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effective_mobile.domain.SharedPrefsRepository
-import com.example.effective_mobile.domain.TicketsOffersRepository
+import com.example.effective_mobile.domain.repository.SharedPrefsRepository
+import com.example.effective_mobile.domain.repository.TicketsOffersRepository
 import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedNavigationEvent
 import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedUiState
-import com.example.effective_mobile.presentation.mapper.TicketsOfferMapper
+import com.example.effective_mobile.presentation.countryselected_fragment.mapper.TicketsOffersMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,7 +17,7 @@ import javax.inject.Inject
 class CountrySelectedViewModel @Inject constructor(
     private val sharedPrefsRepository: SharedPrefsRepository,
     private val ticketsOffersRepository: TicketsOffersRepository,
-    private val ticketsOfferMapper: TicketsOfferMapper
+    private val ticketsOffersMapper: TicketsOffersMapper
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CountrySelectedUiState())
@@ -31,7 +31,7 @@ class CountrySelectedViewModel @Inject constructor(
     private fun getTicketsOffers() {
         viewModelScope.launch(Dispatchers.IO) {
             val offerList = ticketsOffersRepository.getTicketsOffers()
-            val mappedOfferList = ticketsOfferMapper.mapDtoToUiList(offerList)
+            val mappedOfferList = ticketsOffersMapper.mapDtoToUiList(offerList)
             _uiState.value = _uiState.value.copy(ticketsOffersList = mappedOfferList)
         }
     }
@@ -47,15 +47,15 @@ class CountrySelectedViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(inputTo = inputString)
     }
 
-    fun navigateToFragmentCountrySelected(event: CountrySelectedNavigationEvent) {
-        handleNavigationEvent(event)
-    }
+//    fun navigateToFragmentTickets(event: CountrySelectedNavigationEvent) {
+//        setNavigationState()
+//    }
+//
+//    fun resetNavigation() {
+//        setNavigationState(CountrySelectedNavigationEvent.NoNavigation)
+//    }
 
-    fun resetNavigation(event: CountrySelectedNavigationEvent) {
-        handleNavigationEvent(event)
-    }
-
-    private fun handleNavigationEvent(event: CountrySelectedNavigationEvent) {
+    fun setNavigationState(event: CountrySelectedNavigationEvent) {
         _uiState.value = _uiState.value.copy(navigation = event)
     }
 }

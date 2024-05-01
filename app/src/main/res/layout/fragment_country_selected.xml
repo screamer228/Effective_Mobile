@@ -206,7 +206,7 @@
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_tickets_offers" />
+                tools:listitem="@layout/item_tickets_offer" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -223,7 +223,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/showAllTicketsBtn"
+        android:id="@+id/button_seeAllTickets"
         style="@style/style_title_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -247,7 +247,7 @@
         app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/showAllTicketsBtn">
+        app:layout_constraintTop_toBottomOf="@id/button_seeAllTickets">
 
         <LinearLayout
             android:layout_width="match_parent"

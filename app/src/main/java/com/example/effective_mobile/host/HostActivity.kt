@@ -1,6 +1,7 @@
 package com.example.effective_mobile.host
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -17,6 +18,7 @@ class HostActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHostBinding
     private lateinit var navController: NavController
+
     @Inject
     lateinit var mainSharedViewModelFactory: MainSharedViewModelFactory
     private lateinit var mainSharedViewModel: MainSharedViewModel
@@ -28,12 +30,22 @@ class HostActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navHostFragment = supportFragmentManager.findFragmentById(
-            R.id.fragmentContainerView) as NavHostFragment
+            R.id.fragmentContainerView
+        ) as NavHostFragment
         navController = navHostFragment.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
 
         (applicationContext as App).appComponent.injectHostActivity(this)
-        mainSharedViewModel = ViewModelProvider(this, mainSharedViewModelFactory).get(MainSharedViewModel::class.java)
+        mainSharedViewModel =
+            ViewModelProvider(this, mainSharedViewModelFactory).get(MainSharedViewModel::class.java)
+    }
+
+    fun hideBottomNavigation() {
+        binding.bottomNavigationView.visibility = View.GONE
+    }
+
+    fun showBottomNavigation() {
+        binding.bottomNavigationView.visibility = View.VISIBLE
     }
 }

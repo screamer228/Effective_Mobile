@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.effective_mobile.CyrillicInputFilter
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentMainBinding
+import com.example.effective_mobile.host.HostActivity
 import com.example.effective_mobile.presentation.main_fragment.adapter.OffersAdapter
 import com.example.effective_mobile.presentation.main_fragment.uistate.MainNavigationEvent
 import com.example.effective_mobile.presentation.main_fragment.viewmodel.MainSharedViewModel
@@ -35,6 +36,8 @@ class MainFragment : Fragment() {
         (requireActivity().applicationContext as App).appComponent.injectMainFragment(this)
         viewModel =
             ViewModelProvider(requireActivity(), viewModelFactory)[MainSharedViewModel::class.java]
+
+        (activity as? HostActivity)?.showBottomNavigation()
 
         _binding = FragmentMainBinding.inflate(layoutInflater)
         return binding.root
@@ -80,7 +83,7 @@ class MainFragment : Fragment() {
         when (navigation) {
 
             is MainNavigationEvent.ToFragmentSearch -> {
-                viewModel.saveInputInPrefs()
+                saveInputFromInPrefs()
                 findNavController().navigate(
                     MainFragmentDirections.actionMainFragmentToSearchFragment()
                 )
@@ -89,6 +92,10 @@ class MainFragment : Fragment() {
 
             else -> {}
         }
+    }
+
+    private fun saveInputFromInPrefs() {
+        viewModel.saveInputFromInPrefs()
     }
 
     private fun saveInputFromInState() {
@@ -100,20 +107,15 @@ class MainFragment : Fragment() {
     }
 
     private fun navigateToFragmentSearch() {
-        viewModel.navigateToFragmentSearch(MainNavigationEvent.ToFragmentSearch)
+        viewModel.setNavigationState(MainNavigationEvent.ToFragmentSearch)
     }
 
     private fun resetNavigation() {
-        viewModel.navigateToFragmentMain(MainNavigationEvent.NoNavigation)
+        viewModel.setNavigationState(MainNavigationEvent.NoNavigation)
     }
 
     private fun inputFilters() {
         binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())
         binding.editTextTo.filters = arrayOf(CyrillicInputFilter())
-    }
-
-    override fun onResume() {
-        resetNavigation()
-        super.onResume()
     }
 }

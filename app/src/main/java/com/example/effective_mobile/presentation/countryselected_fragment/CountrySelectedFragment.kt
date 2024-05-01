@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.effective_mobile.CyrillicInputFilter
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentCountrySelectedBinding
+import com.example.effective_mobile.host.HostActivity
 import com.example.effective_mobile.presentation.countryselected_fragment.adapter.TicketsOffersAdapter
+import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedNavigationEvent
 import com.example.effective_mobile.presentation.countryselected_fragment.viewmodel.CountrySelectedViewModel
 import com.example.effective_mobile.presentation.countryselected_fragment.viewmodel.CountrySelectedViewModelFactory
 import kotlinx.coroutines.launch
@@ -33,9 +36,13 @@ class CountrySelectedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity().applicationContext as App).appComponent.injectCountrySelectedFragment(this)
+        (requireActivity().applicationContext as App).appComponent.injectCountrySelectedFragment(
+            this
+        )
         viewModel =
             ViewModelProvider(this, viewModelFactory)[CountrySelectedViewModel::class.java]
+
+        (activity as? HostActivity)?.showBottomNavigation()
 
         _binding = FragmentCountrySelectedBinding.inflate(layoutInflater)
         return binding.root
@@ -44,7 +51,6 @@ class CountrySelectedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d("arg check", args.inputTo)
         viewModel.setInputToInState(args.inputTo)
 
         adapter = TicketsOffersAdapter(requireContext())
@@ -52,24 +58,53 @@ class CountrySelectedFragment : Fragment() {
 
         inputFilters()
 
+        binding.buttonSeeAllTickets.setOnClickListener {
+            navigateToFragmentTickets()
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
                 binding.editTextFrom.setText(uiState.inputFrom)
                 binding.editTextTo.setText(uiState.inputTo)
                 Log.d("json check", "in uiState: ${uiState.ticketsOffersList.first().title}")
                 adapter.updateList(uiState.ticketsOffersList)
-//                when (uiState.navigation) {
-//                    is CountrySelectedNavigationEvent.ResetNavigation -> findNavController().navigateUp()
-//
-//                    is CountrySelectedNavigationEvent.ToFragmentTickets -> findNavController().navigate(
-//                        CountrySelectedFragmentDirections.actionMainFragmentToSearchFragment()
-//                    )
-//                }
+                handleNavigationEvent(
+                    uiState.navigation,
+                    "${uiState.inputFrom}-${uiState.inputTo}",
+                    binding.dateBtn.text.toString()
+                )
             }
         }
     }
 
+    private fun handleNavigationEvent(
+        navigation: CountrySelectedNavigationEvent,
+        townsTitle: String,
+        dateTitle: String
+    ) {
+        when (navigation) {
 
+            is CountrySelectedNavigationEvent.ToFragmentTickets -> {
+                findNavController().navigate(
+                    CountrySelectedFragmentDirections.actionCountrySelectedFragmentToTicketsFragment(
+                        townsTitle,
+                        dateTitle
+                    )
+                )
+                resetNavigation()
+            }
+
+            else -> {}
+        }
+    }
+
+    private fun navigateToFragmentTickets() {
+        viewModel.setNavigationState(CountrySelectedNavigationEvent.ToFragmentTickets)
+    }
+
+    private fun resetNavigation() {
+        viewModel.setNavigationState(CountrySelectedNavigationEvent.NoNavigation)
+    }
 
     private fun inputFilters() {
         binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())

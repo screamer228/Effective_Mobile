@@ -2,14 +2,14 @@ package com.example.effective_mobile.presentation.main_fragment.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.effective_mobile.domain.OffersRepository
-import com.example.effective_mobile.domain.SharedPrefsRepository
-import com.example.effective_mobile.presentation.mapper.OfferMapper
+import com.example.effective_mobile.domain.repository.OffersRepository
+import com.example.effective_mobile.domain.repository.SharedPrefsRepository
+import com.example.effective_mobile.presentation.main_fragment.mapper.OffersMapper
 
 class MainSharedViewModelFactory(
     private val sharedPrefsRepository: SharedPrefsRepository,
     private val offersRepository: OffersRepository,
-    private val offerMapper: OfferMapper
+    private val offerMapper: OffersMapper
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

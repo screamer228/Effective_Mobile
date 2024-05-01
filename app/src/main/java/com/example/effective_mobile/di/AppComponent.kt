@@ -8,11 +8,13 @@ import com.example.effective_mobile.presentation.search_fragment.SearchFragment
 import com.example.effective_mobile.presentation.SubsFragment
 import com.example.effective_mobile.presentation.countryselected_fragment.CountrySelectedFragment
 import com.example.effective_mobile.presentation.main_fragment.MainFragment
+import com.example.effective_mobile.presentation.tickets_fragment.TicketsFragment
 import dagger.Component
 
 @Component(modules = [AppModule::class])
 interface AppComponent {
 
+    fun injectTicketsFragment(ticketsFragment: TicketsFragment)
     fun injectCountrySelectedFragment(countrySelectedFragment: CountrySelectedFragment)
     fun injectHostActivity(hostActivity: HostActivity)
     fun injectMainFragment(mainFragment: MainFragment)
