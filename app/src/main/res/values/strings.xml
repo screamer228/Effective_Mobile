@@ -23,4 +23,19 @@
     <string name="passenger"> пассажир</string>
     <string name="filer">Фильтр</string>
     <string name="price_graph">График цен</string>
+    <string name="January">января</string>
+    <string name="February">февраля</string>
+    <string name="March">марта</string>
+    <string name="April">апреля</string>
+    <string name="May">мая</string>
+    <string name="June">июня</string>
+    <string name="July">июля</string>
+    <string name="August">августа</string>
+    <string name="September">сентября</string>
+    <string name="October">октября</string>
+    <string name="November">ноября</string>
+    <string name="December">декабря</string>
+    <string name="dash">-</string>
+    <string name="comma_space">", "</string>
+    <string name="SimpleDateFormat">"dd MMMM"</string>
 </resources>

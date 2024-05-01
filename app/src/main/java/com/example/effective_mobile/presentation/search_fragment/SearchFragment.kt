@@ -10,7 +10,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.effective_mobile.CyrillicInputFilter
+import com.example.effective_mobile.utils.CyrillicInputFilter
 import com.example.effective_mobile.R
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentSearchBinding

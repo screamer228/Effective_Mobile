@@ -47,14 +47,6 @@ class CountrySelectedViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(inputTo = inputString)
     }
 
-//    fun navigateToFragmentTickets(event: CountrySelectedNavigationEvent) {
-//        setNavigationState()
-//    }
-//
-//    fun resetNavigation() {
-//        setNavigationState(CountrySelectedNavigationEvent.NoNavigation)
-//    }
-
     fun setNavigationState(event: CountrySelectedNavigationEvent) {
         _uiState.value = _uiState.value.copy(navigation = event)
     }

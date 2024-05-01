@@ -1,4 +1,4 @@
-package com.example.effective_mobile
+package com.example.effective_mobile.utils
 
 import android.text.InputFilter
 import android.text.Spanned

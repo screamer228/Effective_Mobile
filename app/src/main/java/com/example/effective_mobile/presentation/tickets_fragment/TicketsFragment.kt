@@ -47,6 +47,10 @@ class TicketsFragment : Fragment() {
         adapter = TicketsAdapter(requireContext())
         binding.recyclerViewTickets.adapter = adapter
 
+        observers()
+    }
+
+    private fun observers() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
                 binding.townsTitle.text = uiState.townsTitle
@@ -55,6 +59,4 @@ class TicketsFragment : Fragment() {
             }
         }
     }
-
-
 }

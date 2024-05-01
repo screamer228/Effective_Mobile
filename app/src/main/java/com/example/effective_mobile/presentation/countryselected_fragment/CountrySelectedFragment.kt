@@ -1,5 +1,6 @@
 package com.example.effective_mobile.presentation.countryselected_fragment
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.effective_mobile.CyrillicInputFilter
+import com.example.effective_mobile.utils.CyrillicInputFilter
 import com.example.effective_mobile.R
 import com.example.effective_mobile.app.App
 import com.example.effective_mobile.databinding.FragmentCountrySelectedBinding
@@ -18,8 +19,13 @@ import com.example.effective_mobile.presentation.countryselected_fragment.adapte
 import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedNavigationEvent
 import com.example.effective_mobile.presentation.countryselected_fragment.viewmodel.CountrySelectedViewModel
 import com.example.effective_mobile.presentation.countryselected_fragment.viewmodel.CountrySelectedViewModelFactory
+import com.example.effective_mobile.utils.MonthDataSource.getMonthNames
 import com.example.effective_mobile.utils.StringsUtils.stringsToRow
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 class CountrySelectedFragment : Fragment() {
@@ -57,6 +63,8 @@ class CountrySelectedFragment : Fragment() {
         adapter = TicketsOffersAdapter(requireContext())
         binding.recyclerViewTicketsOffers.adapter = adapter
 
+        setCurrentDate()
+
         inputFilters()
 
         clickListeners()
@@ -73,11 +81,11 @@ class CountrySelectedFragment : Fragment() {
                 adapter.updateList(uiState.ticketsOffersList)
                 handleNavigationEvent(
                     uiState.navigation,
-                    stringsToRow(uiState.inputFrom, uiState.inputTo, "-"),
+                    stringsToRow(uiState.inputFrom, uiState.inputTo, getString(R.string.dash)),
                     stringsToRow(
                         binding.dateBtn.text.toString(),
                         binding.countPassBtn.text.first().toString(),
-                        ", "
+                        getString(R.string.comma_space)
                     ) + getString(
                         R.string.passenger
                     )
@@ -87,6 +95,18 @@ class CountrySelectedFragment : Fragment() {
     }
 
     private fun clickListeners() {
+        binding.buttonBack.setOnClickListener {
+            navigateBack()
+        }
+
+        binding.backTicketBtn.setOnClickListener {
+            openDatePickerDialog(false)
+        }
+
+        binding.dateBtn.setOnClickListener {
+            openDatePickerDialog(true)
+        }
+
         binding.buttonSeeAllTickets.setOnClickListener {
             navigateToFragmentTickets()
         }
@@ -109,12 +129,21 @@ class CountrySelectedFragment : Fragment() {
                 resetNavigation()
             }
 
+            is CountrySelectedNavigationEvent.NavigateBack -> {
+                findNavController().popBackStack()
+                resetNavigation()
+            }
+
             else -> {}
         }
     }
 
     private fun navigateToFragmentTickets() {
         viewModel.setNavigationState(CountrySelectedNavigationEvent.ToFragmentTickets)
+    }
+
+    private fun navigateBack() {
+        viewModel.setNavigationState(CountrySelectedNavigationEvent.NavigateBack)
     }
 
     private fun resetNavigation() {
@@ -124,5 +153,43 @@ class CountrySelectedFragment : Fragment() {
     private fun inputFilters() {
         binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())
         binding.editTextTo.filters = arrayOf(CyrillicInputFilter())
+    }
+
+    private fun setCurrentDate() {
+        val currentDate = Calendar.getInstance().time
+        val formattedDate = formatDate(currentDate)
+        binding.dateBtn.text = formattedDate
+    }
+
+    private fun openDatePickerDialog(isNeedSetSelectedDate: Boolean) {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+
+        fun formatDate(dayOfMonth: Int, month: Int): String {
+            val monthNames = getMonthNames(requireContext())
+            return "$dayOfMonth ${monthNames[month]}"
+        }
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            { _, _, selectedMonth, selectedDayOfMonth ->
+                val selectedDate = formatDate(selectedDayOfMonth, selectedMonth)
+
+                if (isNeedSetSelectedDate) {
+                    binding.dateBtn.text = selectedDate
+                }
+            },
+            year,
+            month,
+            dayOfMonth
+        )
+        datePickerDialog.show()
+    }
+
+    private fun formatDate(date: Date): String {
+        val dateFormat = SimpleDateFormat(getString(R.string.SimpleDateFormat), Locale.getDefault())
+        return dateFormat.format(date)
     }
 }
