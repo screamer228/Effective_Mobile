@@ -49,4 +49,7 @@
     <string name="istanbul">Стамбул</string>
     <string name="sochi">Сочи</string>
     <string name="phuket">Пхукет</string>
+    <string name="hard_route_fragment">Hard route Fragment</string>
+    <string name="weekends_fragment">Weekends Fragment</string>
+    <string name="hot_tickets_fragment">Hot tickets Fragment</string>
 </resources>

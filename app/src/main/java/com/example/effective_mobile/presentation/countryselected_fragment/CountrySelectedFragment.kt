@@ -167,15 +167,15 @@ class CountrySelectedFragment : Fragment() {
         viewModel.setNavigationState(CountrySelectedNavigationEvent.NoNavigation)
     }
 
-    private fun inputFilters() {
-        binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())
-        binding.editTextTo.filters = arrayOf(CyrillicInputFilter())
-    }
-
     private fun setCurrentDate() {
         val currentDate = Calendar.getInstance().time
         val formattedDate = formatDate(currentDate)
         binding.buttonDate.text = formattedDate
+    }
+
+    private fun formatDate(date: Date): String {
+        val dateFormat = SimpleDateFormat(getString(R.string.SimpleDateFormat), Locale.getDefault())
+        return dateFormat.format(date)
     }
 
     private fun openDatePickerDialog(isNeedSetSelectedDate: Boolean) {
@@ -205,8 +205,8 @@ class CountrySelectedFragment : Fragment() {
         datePickerDialog.show()
     }
 
-    private fun formatDate(date: Date): String {
-        val dateFormat = SimpleDateFormat(getString(R.string.SimpleDateFormat), Locale.getDefault())
-        return dateFormat.format(date)
+    private fun inputFilters() {
+        binding.editTextFrom.filters = arrayOf(CyrillicInputFilter())
+        binding.editTextTo.filters = arrayOf(CyrillicInputFilter())
     }
 }

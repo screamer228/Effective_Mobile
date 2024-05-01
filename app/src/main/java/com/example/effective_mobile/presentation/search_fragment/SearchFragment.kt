@@ -70,7 +70,6 @@ class SearchFragment : Fragment() {
         observers()
 
         binding.editTextTo.requestFocus()
-
     }
 
     private fun observers() {
@@ -94,8 +93,77 @@ class SearchFragment : Fragment() {
                 resetNavigation()
             }
 
+            is MainNavigationEvent.ToFragmentHardRoute -> {
+                findNavController().navigate(
+                    SearchFragmentDirections.actionSearchFragmentToHardRouteFragment()
+                )
+                resetNavigation()
+            }
+
+            is MainNavigationEvent.ToFragmentWeekends -> {
+                findNavController().navigate(
+                    SearchFragmentDirections.actionSearchFragmentToWeekendsFragment()
+                )
+                resetNavigation()
+            }
+
+            is MainNavigationEvent.ToFragmentHotTickets -> {
+                findNavController().navigate(
+                    SearchFragmentDirections.actionSearchFragmentToHotTicketsFragment()
+                )
+                resetNavigation()
+            }
+
             else -> {}
         }
+    }
+
+    private fun clickListeners() {
+        binding.imageViewClear.setOnClickListener {
+            binding.editTextTo.text?.clear()
+        }
+
+        binding.containerHardRoute.setOnClickListener {
+            navigateToFragmentHardRoute()
+        }
+
+        binding.containerAnywhere.setOnClickListener {
+            val text = binding.textViewAnywhere.text.toString()
+            binding.editTextTo.setText(text)
+            binding.editTextTo.text?.let { it1 -> binding.editTextTo.setSelection(it1.length) }
+        }
+
+        binding.containerWeekends.setOnClickListener {
+            navigateToFragmentWeekends()
+        }
+
+        binding.containerHotTickets.setOnClickListener {
+            navigateToFragmentHotTickets()
+        }
+    }
+
+    private fun saveInputToInState() {
+        viewModel.setInputToInState(binding.editTextTo.text.toString())
+    }
+
+    private fun navigateToFragmentCountrySelected() {
+        viewModel.setNavigationState(MainNavigationEvent.ToFragmentCountrySelected)
+    }
+
+    private fun navigateToFragmentHardRoute() {
+        viewModel.setNavigationState(MainNavigationEvent.ToFragmentHardRoute)
+    }
+
+    private fun navigateToFragmentWeekends() {
+        viewModel.setNavigationState(MainNavigationEvent.ToFragmentWeekends)
+    }
+
+    private fun navigateToFragmentHotTickets() {
+        viewModel.setNavigationState(MainNavigationEvent.ToFragmentHotTickets)
+    }
+
+    private fun resetNavigation() {
+        viewModel.setNavigationState(MainNavigationEvent.NoNavigation)
     }
 
     private fun inputActionListeners() {
@@ -110,24 +178,6 @@ class SearchFragment : Fragment() {
                 false
             }
         }
-    }
-
-    private fun clickListeners() {
-        binding.imageViewClear.setOnClickListener {
-            binding.editTextTo.text?.clear()
-        }
-    }
-
-    private fun saveInputToInState() {
-        viewModel.setInputToInState(binding.editTextTo.text.toString())
-    }
-
-    private fun navigateToFragmentCountrySelected() {
-        viewModel.setNavigationState(MainNavigationEvent.ToFragmentCountrySelected)
-    }
-
-    private fun resetNavigation() {
-        viewModel.setNavigationState(MainNavigationEvent.NoNavigation)
     }
 
     private fun hideBottomNavigation() {
