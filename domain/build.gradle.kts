@@ -10,5 +10,5 @@ java {
 }
 
 dependencies {
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.23")
 }

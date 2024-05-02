@@ -36,7 +36,10 @@ android {
 
 dependencies {
 
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22")
+    //module
+    project(path = ":domain")
+
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.23")
 
     implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)
