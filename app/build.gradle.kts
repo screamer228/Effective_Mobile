@@ -72,11 +72,6 @@ dependencies {
     implementation ("com.google.dagger:dagger:$daggerVersion")
     kapt ("com.google.dagger:dagger-compiler:$daggerVersion")
 
-    //koin
-//    val koinVersion = "3.5.6"
-//    implementation("io.insert-koin:koin-core:$koinVersion")
-//    implementation("io.insert-koin:koin-android:$koinVersion")
-
     //navigation
     val navVersion = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")

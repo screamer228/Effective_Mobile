@@ -1,6 +1,8 @@
 plugins {
-    alias(libs.plugins.androidLibrary)
+//    alias(libs.plugins.androidLibrary)
+    id ("com.android.library")
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id ("kotlin-android")
 }
 
 android {
@@ -33,6 +35,8 @@ android {
 }
 
 dependencies {
+
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22")
 
     implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)
