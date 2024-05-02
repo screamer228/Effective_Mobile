@@ -11,7 +11,7 @@ import com.example.effective_mobile.presentation.main_fragment.MainFragment
 import com.example.effective_mobile.presentation.tickets_fragment.TicketsFragment
 import dagger.Component
 
-@Component(modules = [AppModule::class])
+@Component(modules = [AppModule::class, DomainModule::class, DataModule::class])
 interface AppComponent {
 
     fun injectTicketsFragment(ticketsFragment: TicketsFragment)

@@ -6,13 +6,13 @@ import com.example.effective_mobile.utils.StringsUtils.addSpaceEveryThreeDigits
 
 class TicketsOffersMapper {
 
-    fun mapDtoToUiList(entityList: List<TicketsOfferEntity>): List<TicketsOffer> {
+    fun mapDtoToUiList(entityList: List<com.example.effective_mobile.domain.entity.TicketsOfferEntity>): List<TicketsOffer> {
         return entityList.map {
             mapDtoToUi(it)
         }
     }
 
-    private fun mapDtoToUi(entity: TicketsOfferEntity): TicketsOffer {
+    private fun mapDtoToUi(entity: com.example.effective_mobile.domain.entity.TicketsOfferEntity): TicketsOffer {
         return TicketsOffer(
             title = entity.title,
             price = addSpaceEveryThreeDigits(entity.price),
