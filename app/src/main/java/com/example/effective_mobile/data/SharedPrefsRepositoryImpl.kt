@@ -17,9 +17,9 @@ class SharedPrefsRepositoryImpl @Inject constructor(
             ?: BuildConfig.PREFS_DEFAULT_VALUE
     }
 
-    override suspend fun saveStringInPrefs(value: String) {
+    override suspend fun saveStringInPrefs(string: String) {
         with(sharedPreferences.edit()) {
-            putString(BuildConfig.PREFS_TITLE_KEY, value)
+            putString(BuildConfig.PREFS_TITLE_KEY, string)
             apply()
         }
     }

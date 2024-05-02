@@ -1,24 +1,23 @@
 package com.example.effective_mobile.presentation.main_fragment.mapper
 
-import com.example.effective_mobile.data.offers.model.dto.OfferDTO
-import com.example.effective_mobile.data.offers.model.dto.OffersDTO
+import com.example.effective_mobile.domain.entity.OfferEntity
 import com.example.effective_mobile.presentation.main_fragment.model.Offer
 import com.example.effective_mobile.utils.StringsUtils.addSpaceEveryThreeDigits
 
 class OffersMapper {
 
-    fun mapDtoToUiList(dto: OffersDTO): List<Offer> {
-        return dto.offers.map {
+    fun mapDtoToUiList(entityList: List<OfferEntity>): List<Offer> {
+        return entityList.map {
             mapDtoToUi(it)
         }
     }
 
-    private fun mapDtoToUi(dto: OfferDTO): Offer {
+    private fun mapDtoToUi(entity: OfferEntity): Offer {
         return Offer(
-            imageUrl = dto.imageUrl,
-            title = dto.title,
-            town = dto.town,
-            price = addSpaceEveryThreeDigits(dto.price)
+            imageUrl = entity.imageUrl,
+            title = entity.title,
+            town = entity.town,
+            price = addSpaceEveryThreeDigits(entity.price)
         )
     }
 }

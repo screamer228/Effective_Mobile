@@ -2,7 +2,7 @@ package com.example.effective_mobile.presentation.tickets_fragment.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effective_mobile.domain.repository.TicketsRepository
+import com.example.effective_mobile.domain.usecase.getticketsoffers.GetTicketsUseCase
 import com.example.effective_mobile.presentation.tickets_fragment.mapper.TicketsMapper
 import com.example.effective_mobile.presentation.tickets_fragment.uistate.TicketsNavigationEvent
 import com.example.effective_mobile.presentation.tickets_fragment.uistate.TicketsUiState
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TicketsViewModel @Inject constructor(
-    private val ticketsRepository: TicketsRepository,
+    private val getTicketsUseCase: GetTicketsUseCase,
     private val ticketsMapper: TicketsMapper
 ) : ViewModel() {
 
@@ -27,7 +27,7 @@ class TicketsViewModel @Inject constructor(
 
     private fun getTickets() {
         viewModelScope.launch(Dispatchers.IO) {
-            val ticketList = ticketsRepository.getTickets()
+            val ticketList = getTicketsUseCase.getTickets()
             val mappedTicketList = ticketsMapper.mapDtoToUiList(ticketList)
             _uiState.value = _uiState.value.copy(ticketsList = mappedTicketList)
         }

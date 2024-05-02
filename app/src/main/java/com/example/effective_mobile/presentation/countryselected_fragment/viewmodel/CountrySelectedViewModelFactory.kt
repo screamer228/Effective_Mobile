@@ -2,21 +2,22 @@ package com.example.effective_mobile.presentation.countryselected_fragment.viewm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.effective_mobile.domain.repository.SharedPrefsRepository
-import com.example.effective_mobile.domain.repository.TicketsOffersRepository
+import com.example.effective_mobile.domain.usecase.getlastinput.GetLastInputUseCase
+import com.example.effective_mobile.domain.usecase.gettickets.GetTicketsOffersUseCase
 import com.example.effective_mobile.presentation.countryselected_fragment.mapper.TicketsOffersMapper
 
 class CountrySelectedViewModelFactory(
-    private val sharedPrefsRepository: SharedPrefsRepository,
-    private val ticketsOffersRepository: TicketsOffersRepository,
+    private val getLastInputUseCase: GetLastInputUseCase,
+    private val getTicketsOffersUseCase: GetTicketsOffersUseCase,
     private val ticketsOfferMapper: TicketsOffersMapper
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CountrySelectedViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
             return CountrySelectedViewModel(
-                sharedPrefsRepository,
-                ticketsOffersRepository,
+                getLastInputUseCase,
+                getTicketsOffersUseCase,
                 ticketsOfferMapper
             ) as T
         }

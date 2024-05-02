@@ -2,8 +2,8 @@ package com.example.effective_mobile.presentation.countryselected_fragment.viewm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effective_mobile.domain.repository.SharedPrefsRepository
-import com.example.effective_mobile.domain.repository.TicketsOffersRepository
+import com.example.effective_mobile.domain.usecase.getlastinput.GetLastInputUseCase
+import com.example.effective_mobile.domain.usecase.gettickets.GetTicketsOffersUseCase
 import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedNavigationEvent
 import com.example.effective_mobile.presentation.countryselected_fragment.uistate.CountrySelectedUiState
 import com.example.effective_mobile.presentation.countryselected_fragment.mapper.TicketsOffersMapper
@@ -15,8 +15,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CountrySelectedViewModel @Inject constructor(
-    private val sharedPrefsRepository: SharedPrefsRepository,
-    private val ticketsOffersRepository: TicketsOffersRepository,
+    private val getLastInputUseCase: GetLastInputUseCase,
+    private val getTicketsOffersUseCase: GetTicketsOffersUseCase,
     private val ticketsOffersMapper: TicketsOffersMapper
 ) : ViewModel() {
 
@@ -30,7 +30,7 @@ class CountrySelectedViewModel @Inject constructor(
 
     private fun getTicketsOffers() {
         viewModelScope.launch(Dispatchers.IO) {
-            val offerList = ticketsOffersRepository.getTicketsOffers()
+            val offerList = getTicketsOffersUseCase.getTicketsOffers()
             val mappedOfferList = ticketsOffersMapper.mapDtoToUiList(offerList)
             _uiState.value = _uiState.value.copy(ticketsOffersList = mappedOfferList)
         }
@@ -38,7 +38,7 @@ class CountrySelectedViewModel @Inject constructor(
 
     private fun getInputFromPrefs() {
         viewModelScope.launch(Dispatchers.IO) {
-            val inputFrom = sharedPrefsRepository.getStringFromPrefs()
+            val inputFrom = getLastInputUseCase.getLastInputFromPrefs()
             setInputFromInState(inputFrom)
         }
     }

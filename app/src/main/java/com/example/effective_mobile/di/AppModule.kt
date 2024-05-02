@@ -10,10 +10,23 @@ import com.example.effective_mobile.data.offers.repository.OffersRepositoryImpl
 import com.example.effective_mobile.data.tickets.mapper.TicketsDtoMapper
 import com.example.effective_mobile.data.tickets.repository.TicketsRepositoryImpl
 import com.example.effective_mobile.data.ticketsoffers.repository.TicketsOffersRepositoryImpl
+import com.example.effective_mobile.domain.mapper.OffersEntityMapper
+import com.example.effective_mobile.domain.mapper.TicketsEntityMapper
+import com.example.effective_mobile.domain.mapper.TicketsOffersEntityMapper
 import com.example.effective_mobile.domain.repository.OffersRepository
 import com.example.effective_mobile.domain.repository.SharedPrefsRepository
 import com.example.effective_mobile.domain.repository.TicketsOffersRepository
 import com.example.effective_mobile.domain.repository.TicketsRepository
+import com.example.effective_mobile.domain.usecase.getlastinput.GetLastInputUseCase
+import com.example.effective_mobile.domain.usecase.getlastinput.GetLastInputUseCaseImpl
+import com.example.effective_mobile.domain.usecase.getoffers.GetOffersUseCase
+import com.example.effective_mobile.domain.usecase.getoffers.GetOffersUseCaseImpl
+import com.example.effective_mobile.domain.usecase.gettickets.GetTicketsOffersUseCase
+import com.example.effective_mobile.domain.usecase.gettickets.GetTicketsOffersUseCaseImpl
+import com.example.effective_mobile.domain.usecase.getticketsoffers.GetTicketsUseCase
+import com.example.effective_mobile.domain.usecase.getticketsoffers.GetTicketsUseCaseImpl
+import com.example.effective_mobile.domain.usecase.saveinput.SaveInputUseCase
+import com.example.effective_mobile.domain.usecase.saveinput.SaveInputUseCaseImpl
 import com.example.effective_mobile.presentation.countryselected_fragment.viewmodel.CountrySelectedViewModelFactory
 import com.example.effective_mobile.presentation.main_fragment.viewmodel.MainSharedViewModelFactory
 import com.example.effective_mobile.presentation.main_fragment.mapper.OffersMapper
@@ -28,35 +41,85 @@ class AppModule(val context: Context) {
 
     @Provides
     fun provideTicketsViewModelFactory(
-        ticketsRepository: TicketsRepository
+        getTicketsUseCase: GetTicketsUseCase
     ): TicketsViewModelFactory {
         return TicketsViewModelFactory(
-            ticketsRepository,
+            getTicketsUseCase,
             ticketsMapper = TicketsMapper()
         )
     }
 
     @Provides
     fun provideCountrySelectedViewModelFactory(
-        sharedPrefsRepository: SharedPrefsRepository,
-        ticketsOffersRepository: TicketsOffersRepository
+        getLastInputUseCase: GetLastInputUseCase,
+        getTicketsOffersUseCase: GetTicketsOffersUseCase
     ): CountrySelectedViewModelFactory {
         return CountrySelectedViewModelFactory(
-            sharedPrefsRepository,
-            ticketsOffersRepository,
+            getLastInputUseCase,
+            getTicketsOffersUseCase,
             ticketsOfferMapper = TicketsOffersMapper()
         )
     }
 
     @Provides
     fun provideMainSharedViewModelFactory(
-        sharedPrefsRepository: SharedPrefsRepository,
-        offersRepository: OffersRepository
+        saveInputUseCase: SaveInputUseCase,
+        getLastInputUseCase: GetLastInputUseCase,
+        getOffersUseCase: GetOffersUseCase
     ): MainSharedViewModelFactory {
         return MainSharedViewModelFactory(
-            sharedPrefsRepository,
-            offersRepository,
+            saveInputUseCase,
+            getLastInputUseCase,
+            getOffersUseCase,
             offerMapper = OffersMapper()
+        )
+    }
+
+    @Provides
+    fun provideGetTicketsUseCase(
+        ticketsRepository: TicketsRepository,
+    ): GetTicketsUseCase {
+        return GetTicketsUseCaseImpl(
+            ticketsRepository,
+            ticketsEntityMapper = TicketsEntityMapper()
+        )
+    }
+
+    @Provides
+    fun provideGetTicketsOffersUseCase(
+        ticketsOffersRepository: TicketsOffersRepository
+    ): GetTicketsOffersUseCase {
+        return GetTicketsOffersUseCaseImpl(
+            ticketsOffersRepository,
+            ticketsOffersEntityMapper = TicketsOffersEntityMapper()
+        )
+    }
+
+    @Provides
+    fun provideGetOffersUseCase(
+        offersRepository: OffersRepository
+    ): GetOffersUseCase {
+        return GetOffersUseCaseImpl(
+            offersRepository,
+            offersEntityMapper = OffersEntityMapper()
+        )
+    }
+
+    @Provides
+    fun provideGetLastInputUseCase(
+        sharedPrefsRepository: SharedPrefsRepository
+    ): GetLastInputUseCase {
+        return GetLastInputUseCaseImpl(
+            sharedPrefsRepository
+        )
+    }
+
+    @Provides
+    fun provideSaveInputUseCase(
+        sharedPrefsRepository: SharedPrefsRepository
+    ): SaveInputUseCase {
+        return SaveInputUseCaseImpl(
+            sharedPrefsRepository
         )
     }
 

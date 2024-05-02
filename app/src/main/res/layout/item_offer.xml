@@ -3,15 +3,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/offer_container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/black"
+    android:paddingStart="0dp"
+    android:paddingEnd="70dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginEnd="70dp"
         app:cardCornerRadius="16dp">
 
         <com.google.android.material.imageview.ShapeableImageView

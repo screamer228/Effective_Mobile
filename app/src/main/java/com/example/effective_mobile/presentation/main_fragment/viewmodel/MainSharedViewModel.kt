@@ -2,8 +2,9 @@ package com.example.effective_mobile.presentation.main_fragment.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effective_mobile.domain.repository.OffersRepository
-import com.example.effective_mobile.domain.repository.SharedPrefsRepository
+import com.example.effective_mobile.domain.usecase.getlastinput.GetLastInputUseCase
+import com.example.effective_mobile.domain.usecase.getoffers.GetOffersUseCase
+import com.example.effective_mobile.domain.usecase.saveinput.SaveInputUseCase
 import com.example.effective_mobile.presentation.main_fragment.uistate.MainNavigationEvent
 import com.example.effective_mobile.presentation.main_fragment.uistate.MainUiState
 import com.example.effective_mobile.presentation.main_fragment.mapper.OffersMapper
@@ -15,8 +16,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainSharedViewModel @Inject constructor(
-    private val sharedPrefsRepository: SharedPrefsRepository,
-    private val offersRepository: OffersRepository,
+    private val saveInputUseCase: SaveInputUseCase,
+    private val getLastInputUseCase: GetLastInputUseCase,
+    private val getOffersUseCase: GetOffersUseCase,
     private val offersMapper: OffersMapper
 ) : ViewModel() {
 
@@ -30,7 +32,7 @@ class MainSharedViewModel @Inject constructor(
 
     private fun getOffers() {
         viewModelScope.launch(Dispatchers.IO) {
-            val offerList = offersRepository.getOffers()
+            val offerList = getOffersUseCase.getOffers()
             val mappedOfferList = offersMapper.mapDtoToUiList(offerList)
             _uiState.value = _uiState.value.copy(offersList = mappedOfferList)
         }
@@ -38,14 +40,14 @@ class MainSharedViewModel @Inject constructor(
 
     private fun getInputFromPrefs() {
         viewModelScope.launch(Dispatchers.IO) {
-            val inputFrom = sharedPrefsRepository.getStringFromPrefs()
+            val inputFrom = getLastInputUseCase.getLastInputFromPrefs()
             setInputFromInState(inputFrom)
         }
     }
 
     fun saveInputFromInPrefs() {
         viewModelScope.launch(Dispatchers.IO) {
-            sharedPrefsRepository.saveStringInPrefs(uiState.value.inputFrom)
+            saveInputUseCase.saveInputInPrefs(uiState.value.inputFrom)
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.effective_mobile.presentation.main_fragment.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.setPadding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -17,11 +18,14 @@ class OffersAdapter(private val context: Context) : RecyclerView.Adapter<OffersA
 
     inner class ViewHolder(private val binding: ItemOfferBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Offer) {
+        fun bind(item: Offer, position: Int) {
             binding.offerImage.load(item.imageUrl)
             binding.offerTitle.text = item.title
             binding.offerTown.text = item.town
             binding.offerPrice.text = context.getString(R.string.from_ps_rubles, item.price)
+            if (position == (itemCount - 1)) {
+                binding.offerContainer.setPadding(0)
+            }
         }
     }
 
@@ -33,7 +37,7 @@ class OffersAdapter(private val context: Context) : RecyclerView.Adapter<OffersA
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = offersList[position]
-        holder.bind(item)
+        holder.bind(item, position)
     }
 
     override fun getItemCount(): Int {

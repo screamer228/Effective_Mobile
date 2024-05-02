@@ -1,7 +1,13 @@
 package com.example.effective_mobile.domain.usecase.saveinput
 
-class SaveInputUseCaseImpl : SaveInputUseCase {
-    override suspend fun saveInputInPrefs() {
-        TODO("Not yet implemented")
+import com.example.effective_mobile.domain.repository.SharedPrefsRepository
+import javax.inject.Inject
+
+class SaveInputUseCaseImpl @Inject constructor(
+    private val sharedPrefsRepository: SharedPrefsRepository
+) : SaveInputUseCase {
+
+    override suspend fun saveInputInPrefs(string: String) {
+        sharedPrefsRepository.saveStringInPrefs(string)
     }
 }
