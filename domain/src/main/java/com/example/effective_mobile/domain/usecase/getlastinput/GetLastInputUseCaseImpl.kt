@@ -7,7 +7,7 @@ class GetLastInputUseCaseImpl @Inject constructor(
     private val sharedPrefsRepository: SharedPrefsRepository
 ) : GetLastInputUseCase {
 
-    override suspend fun getLastInputFromPrefs() : String {
+    override suspend fun getLastInputFromPrefs(): String {
         return sharedPrefsRepository.getStringFromPrefs()
     }
 }

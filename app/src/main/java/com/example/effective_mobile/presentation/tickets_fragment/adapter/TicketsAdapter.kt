@@ -1,7 +1,6 @@
 package com.example.effective_mobile.presentation.tickets_fragment.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,8 @@ class TicketsAdapter(private val context: Context) :
             binding.ticketTimeRange.text = item.timeRange
             binding.ticketAirportDeparture.text = item.departureAirport
             binding.ticketAirportArrival.text = item.arrivalAirport
-            binding.ticketTravelTime.text = context.getString(R.string.ps_on_the_way, item.travelTime)
+            binding.ticketTravelTime.text =
+                context.getString(R.string.ps_on_the_way, item.travelTime)
             binding.ticketWithoutTransfer.isVisible = !item.hasTransfer
         }
     }
@@ -41,7 +41,6 @@ class TicketsAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = ticketsList[position]
-        Log.d("transfer check", "in adapter: ${ticketsList.first().hasTransfer}")
         holder.bind(item)
     }
 

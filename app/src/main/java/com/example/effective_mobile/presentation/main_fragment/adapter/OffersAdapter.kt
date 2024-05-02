@@ -12,7 +12,8 @@ import com.example.effective_mobile.databinding.ItemOfferBinding
 import com.example.effective_mobile.presentation.main_fragment.model.Offer
 import com.example.effective_mobile.utils.OffersDiffUtil
 
-class OffersAdapter(private val context: Context) : RecyclerView.Adapter<OffersAdapter.ViewHolder>() {
+class OffersAdapter(private val context: Context) :
+    RecyclerView.Adapter<OffersAdapter.ViewHolder>() {
 
     private var offersList: List<Offer> = listOf()
 

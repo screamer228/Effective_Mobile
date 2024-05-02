@@ -38,7 +38,7 @@
         android:id="@+id/searchFragment"
         android:name="com.example.effective_mobile.presentation.search_fragment.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_countrySelectedFragment"
             app:destination="@id/countrySelectedFragment" />
@@ -56,11 +56,11 @@
         android:id="@+id/countrySelectedFragment"
         android:name="com.example.effective_mobile.presentation.countryselected_fragment.CountrySelectedFragment"
         android:label="fragment_country_selected"
-        tools:layout="@layout/fragment_country_selected" >
+        tools:layout="@layout/fragment_country_selected">
         <argument
             android:name="inputTo"
-            app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_countrySelectedFragment_to_ticketsFragment"
             app:destination="@id/ticketsFragment" />
@@ -69,15 +69,15 @@
         android:id="@+id/ticketsFragment"
         android:name="com.example.effective_mobile.presentation.tickets_fragment.TicketsFragment"
         android:label="fragment_tickets"
-        tools:layout="@layout/fragment_tickets" >
+        tools:layout="@layout/fragment_tickets">
         <argument
             android:name="townsTitle"
-            app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="dateTitle"
-            app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue=""
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/hardRouteFragment"

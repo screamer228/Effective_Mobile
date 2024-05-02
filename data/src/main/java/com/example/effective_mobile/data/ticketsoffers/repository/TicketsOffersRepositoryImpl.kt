@@ -1,7 +1,7 @@
 package com.example.effective_mobile.data.ticketsoffers.repository
 
 import android.content.Context
-import com.example.effective_mobile.data.DataSourceReader.getJsonString
+import com.example.effective_mobile.data.datahelper.DataSourceReader.getJsonString
 import com.example.effective_mobile.data.ticketsoffers.mapper.TicketsOffersEntityMapper
 import com.example.effective_mobile.data.ticketsoffers.dto.TicketsOffersDTO
 import com.example.effective_mobile.domain.entity.TicketsOfferEntity

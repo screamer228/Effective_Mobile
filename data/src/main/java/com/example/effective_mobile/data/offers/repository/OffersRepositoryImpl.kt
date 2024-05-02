@@ -1,7 +1,7 @@
 package com.example.effective_mobile.data.offers.repository
 
 import android.content.Context
-import com.example.effective_mobile.data.DataSourceReader
+import com.example.effective_mobile.data.datahelper.DataSourceReader
 import com.example.effective_mobile.data.offers.mapper.OffersEntityMapper
 import com.example.effective_mobile.data.offers.dto.OffersDTO
 import com.example.effective_mobile.domain.entity.OfferEntity

@@ -1,8 +1,7 @@
 plugins {
-//    alias(libs.plugins.androidLibrary)
-    id ("com.android.library")
+    id("com.android.library")
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id ("kotlin-android")
+    id("kotlin-android")
     id("kotlin-kapt")
 }
 
@@ -24,7 +23,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "PREFS_NAME", "\"sharedPreferences\"")
             buildConfigField("String", "PREFS_TITLE_KEY", "\"prefsStringKey\"")
             buildConfigField("String", "PREFS_DEFAULT_VALUE", "\"\"")
         }
@@ -34,7 +32,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "PREFS_NAME", "\"sharedPreferences\"")
             buildConfigField("String", "PREFS_TITLE_KEY", "\"prefsStringKey\"")
             buildConfigField("String", "PREFS_DEFAULT_VALUE", "\"\"")
         }
@@ -53,20 +50,19 @@ android {
 
 dependencies {
 
-    implementation(project(":domain"))
     //module
-    project(path = ":domain")
+    implementation(project(":domain"))
 
     //Gson
     implementation("com.google.code.gson:gson:2.10.1")
 
     //dagger
     val daggerVersion = "2.50"
-    implementation ("com.google.dagger:dagger:$daggerVersion")
-    kapt ("com.google.dagger:dagger-compiler:$daggerVersion")
+    implementation("com.google.dagger:dagger:$daggerVersion")
+    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
 
     //kotlin
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.23")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.23")
 
     implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)

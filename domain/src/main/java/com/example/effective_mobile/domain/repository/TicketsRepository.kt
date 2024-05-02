@@ -4,6 +4,6 @@ import com.example.effective_mobile.domain.entity.TicketEntity
 
 interface TicketsRepository {
 
-    suspend fun getTickets() : List<TicketEntity>
+    suspend fun getTickets(): List<TicketEntity>
 
 }

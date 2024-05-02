@@ -1,4 +1,4 @@
-package com.example.effective_mobile.data
+package com.example.effective_mobile.data.datahelper
 
 import android.content.Context
 import android.content.res.AssetManager

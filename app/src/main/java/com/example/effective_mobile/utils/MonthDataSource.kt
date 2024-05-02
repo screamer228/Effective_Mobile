@@ -6,7 +6,7 @@ import com.example.effective_mobile.R
 
 object MonthDataSource {
 
-    fun getMonthNames(context: Context) : Array<String> {
+    fun getMonthNames(context: Context): Array<String> {
         return arrayOf(
             getString(context, R.string.January),
             getString(context, R.string.February),

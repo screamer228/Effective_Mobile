@@ -3,7 +3,7 @@ package com.example.effective_mobile.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.effective_mobile.BuildConfig
-import com.example.effective_mobile.data.SharedPrefsRepositoryImpl
+import com.example.effective_mobile.data.sharedprefs.SharedPrefsRepositoryImpl
 import com.example.effective_mobile.data.offers.mapper.OffersEntityMapper
 import com.example.effective_mobile.data.offers.repository.OffersRepositoryImpl
 import com.example.effective_mobile.data.tickets.mapper.TicketsEntityMapper

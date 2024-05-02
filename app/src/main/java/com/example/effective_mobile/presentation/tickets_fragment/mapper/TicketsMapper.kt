@@ -9,13 +9,13 @@ import com.example.effective_mobile.utils.StringsUtils.stringsToRow
 
 class TicketsMapper {
 
-    fun mapDtoToUiList(entityList: List<com.example.effective_mobile.domain.entity.TicketEntity>): List<Ticket> {
+    fun mapDtoToUiList(entityList: List<TicketEntity>): List<Ticket> {
         return entityList.map {
             mapDtoToUi(it)
         }
     }
 
-    private fun mapDtoToUi(entity: com.example.effective_mobile.domain.entity.TicketEntity): Ticket {
+    private fun mapDtoToUi(entity: TicketEntity): Ticket {
 
         val departureTime = convertDateTimeToTime(entity.departureDate)
         val arrivalTime = convertDateTimeToTime(entity.arrivalDate)

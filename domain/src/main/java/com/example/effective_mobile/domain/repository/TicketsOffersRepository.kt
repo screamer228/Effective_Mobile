@@ -5,6 +5,6 @@ import com.example.effective_mobile.domain.entity.TicketsOfferEntity
 
 interface TicketsOffersRepository {
 
-    suspend fun getTicketsOffers() : List<TicketsOfferEntity>
+    suspend fun getTicketsOffers(): List<TicketsOfferEntity>
 
 }

@@ -56,11 +56,9 @@ android {
 
 dependencies {
 
+    //modules
     implementation(project(":domain"))
     implementation(project(":data"))
-    //modules
-    project(path = ":domain")
-    project(path = ":data")
 
     //coil
     implementation("io.coil-kt:coil:2.6.0")
@@ -74,8 +72,8 @@ dependencies {
 
     //dagger
     val daggerVersion = "2.50"
-    implementation ("com.google.dagger:dagger:$daggerVersion")
-    kapt ("com.google.dagger:dagger-compiler:$daggerVersion")
+    implementation("com.google.dagger:dagger:$daggerVersion")
+    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
 
     //navigation
     val navVersion = "2.7.7"

@@ -6,7 +6,7 @@ import com.example.effective_mobile.presentation.countryselected_fragment.model.
 class TicketsOffersDiffUtil(
     private val oldList: List<TicketsOffer>,
     private val newList: List<TicketsOffer>
-): DiffUtil.Callback() {
+) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
     }
@@ -21,18 +21,18 @@ class TicketsOffersDiffUtil(
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return when {
-//            oldList[oldItemPosition].iconColor != newList[newItemPosition].iconColor -> {
-//                false
-//            }
             oldList[oldItemPosition].title != newList[newItemPosition].title -> {
                 false
             }
+
             oldList[oldItemPosition].price != newList[newItemPosition].price -> {
                 false
             }
+
             oldList[oldItemPosition].timeRange != newList[newItemPosition].timeRange -> {
                 false
             }
+
             else -> true
         }
     }

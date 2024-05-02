@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+
     <style name="style_title_1">
         <item name="android:fontFamily">@font/sf_pro_display_semibold_600</item>
         <item name="android:textSize">@dimen/size_title_1</item>
     </style>
+
     <style name="style_title_2">
         <item name="android:fontFamily">@font/sf_pro_display_semibold_600</item>
         <item name="android:textSize">@dimen/size_title_2</item>
     </style>
+
     <style name="style_title_3">
         <item name="android:fontFamily">@font/sf_pro_display_semibold_600</item>
         <item name="android:textSize">@dimen/size_title_3</item>
     </style>
+
     <style name="style_title_4">
         <item name="android:fontFamily">@font/sf_pro_display_regular_italic_400</item>
         <item name="android:textSize">@dimen/size_title_4</item>
     </style>
+
     <style name="style_text_1">
         <item name="android:fontFamily">@font/sf_pro_display_semibold_600</item>
         <item name="android:textSize">@dimen/size_text_1</item>
     </style>
+
     <style name="style_text_2">
         <item name="android:fontFamily">@font/sf_pro_display_regular_400</item>
         <item name="android:textSize">@dimen/size_text_2</item>
     </style>
+
     <style name="style_button_text">
         <item name="android:fontFamily">@font/sf_pro_display_semibold_600</item>
         <item name="android:textSize">@dimen/size_button_text</item>
     </style>
+
     <style name="style_tab_text">
         <item name="android:fontFamily">@font/sf_pro_display_regular_400</item>
         <item name="android:textSize">@dimen/size_tab_text</item>

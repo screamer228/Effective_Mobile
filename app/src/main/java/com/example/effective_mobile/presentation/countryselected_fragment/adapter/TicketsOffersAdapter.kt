@@ -20,6 +20,7 @@ class TicketsOffersAdapter(private val context: Context) :
     inner class ViewHolder(private val binding: ItemTicketsOfferBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TicketsOffer, position: Int) {
+
             val iconColor = when (position) {
                 0 -> {
                     R.color.red

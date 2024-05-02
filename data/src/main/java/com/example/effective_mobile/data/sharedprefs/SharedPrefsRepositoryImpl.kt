@@ -1,4 +1,4 @@
-package com.example.effective_mobile.data
+package com.example.effective_mobile.data.sharedprefs
 
 import android.content.SharedPreferences
 import com.example.data.BuildConfig

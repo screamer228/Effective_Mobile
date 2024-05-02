@@ -4,6 +4,7 @@ import android.text.InputFilter
 import android.text.Spanned
 
 class CyrillicInputFilter : InputFilter {
+
     override fun filter(
         source: CharSequence?,
         start: Int,
@@ -14,7 +15,9 @@ class CyrillicInputFilter : InputFilter {
     ): CharSequence? {
         for (i in start until end) {
             val c = source?.get(i)
-            if (c != null && c != ' ' && !Character.UnicodeBlock.of(c)?.equals(Character.UnicodeBlock.CYRILLIC)!!) {
+            if (c != null && c != ' ' && !Character.UnicodeBlock.of(c)
+                    ?.equals(Character.UnicodeBlock.CYRILLIC)!!
+            ) {
                 return ""
             }
         }

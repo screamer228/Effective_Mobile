@@ -4,6 +4,6 @@ import com.example.effective_mobile.domain.entity.TicketsOfferEntity
 
 interface GetTicketsOffersUseCase {
 
-    suspend fun getTicketsOffers() : List<com.example.effective_mobile.domain.entity.TicketsOfferEntity>
+    suspend fun getTicketsOffers(): List<TicketsOfferEntity>
 
 }

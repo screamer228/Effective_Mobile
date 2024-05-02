@@ -29,16 +29,20 @@ class HostActivity : AppCompatActivity() {
         binding = ActivityHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupNavController()
+
+        (applicationContext as App).appComponent.injectHostActivity(this)
+        mainSharedViewModel =
+            ViewModelProvider(this, mainSharedViewModelFactory)[MainSharedViewModel::class.java]
+    }
+
+    private fun setupNavController() {
         val navHostFragment = supportFragmentManager.findFragmentById(
             R.id.fragmentContainerView
         ) as NavHostFragment
         navController = navHostFragment.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
-
-        (applicationContext as App).appComponent.injectHostActivity(this)
-        mainSharedViewModel =
-            ViewModelProvider(this, mainSharedViewModelFactory).get(MainSharedViewModel::class.java)
     }
 
     fun hideBottomNavigation() {

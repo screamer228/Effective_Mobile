@@ -43,17 +43,3 @@ object StringsUtils {
         return result.reverse().toString()
     }
 }
-
-//fun main() {
-//    val startDateTime = "2024-02-23T03:15:00"
-//    val endDateTime = "2024-02-24T08:30:00"
-//
-//    val startTime = TimeUtils.convertDateTimeToTime(startDateTime)
-//    val endTime = TimeUtils.convertDateTimeToTime(endDateTime)
-//
-//    println("Start Time: $startTime")
-//    println("End Time: $endTime")
-//
-//    val timeDifference = TimeUtils.calculateTimeDifference(startDateTime, endDateTime)
-//    println("Time Difference: $timeDifference")
-//}

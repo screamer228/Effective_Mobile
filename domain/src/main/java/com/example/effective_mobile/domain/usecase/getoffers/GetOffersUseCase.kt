@@ -4,6 +4,6 @@ import com.example.effective_mobile.domain.entity.OfferEntity
 
 interface GetOffersUseCase {
 
-    suspend fun getOffers() : List<OfferEntity>
+    suspend fun getOffers(): List<OfferEntity>
 
 }

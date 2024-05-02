@@ -1,7 +1,7 @@
 package com.example.effective_mobile.data.tickets.repository
 
 import android.content.Context
-import com.example.effective_mobile.data.DataSourceReader
+import com.example.effective_mobile.data.datahelper.DataSourceReader
 import com.example.effective_mobile.data.tickets.mapper.TicketsEntityMapper
 import com.example.effective_mobile.data.tickets.dto.TicketsDTO
 import com.example.effective_mobile.domain.entity.TicketEntity

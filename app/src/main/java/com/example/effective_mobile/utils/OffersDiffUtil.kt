@@ -6,7 +6,7 @@ import com.example.effective_mobile.presentation.main_fragment.model.Offer
 class OffersDiffUtil(
     private val oldList: List<Offer>,
     private val newList: List<Offer>
-): DiffUtil.Callback() {
+) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
     }
@@ -24,15 +24,19 @@ class OffersDiffUtil(
             oldList[oldItemPosition].imageUrl != newList[newItemPosition].imageUrl -> {
                 false
             }
+
             oldList[oldItemPosition].title != newList[newItemPosition].title -> {
                 false
             }
+
             oldList[oldItemPosition].town != newList[newItemPosition].town -> {
                 false
             }
+
             oldList[oldItemPosition].price != newList[newItemPosition].price -> {
                 false
             }
+
             else -> true
         }
     }

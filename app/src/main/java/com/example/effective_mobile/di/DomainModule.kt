@@ -1,6 +1,5 @@
 package com.example.effective_mobile.di
 
-import com.example.effective_mobile.data.ticketsoffers.repository.TicketsOffersRepositoryImpl
 import com.example.effective_mobile.domain.repository.OffersRepository
 import com.example.effective_mobile.domain.repository.SharedPrefsRepository
 import com.example.effective_mobile.domain.repository.TicketsOffersRepository
@@ -15,7 +14,6 @@ import com.example.effective_mobile.domain.usecase.getticketsoffers.GetTicketsUs
 import com.example.effective_mobile.domain.usecase.getticketsoffers.GetTicketsUseCaseImpl
 import com.example.effective_mobile.domain.usecase.saveinput.SaveInputUseCase
 import com.example.effective_mobile.domain.usecase.saveinput.SaveInputUseCaseImpl
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
@@ -66,10 +64,5 @@ class DomainModule {
             sharedPrefsRepository
         )
     }
-
-//    @Binds
-//    fun bindTicketsOffersRepository(
-//        ticketsOffersRepository: TicketsOffersRepositoryImpl
-//    ): TicketsOffersRepository
 
 }
