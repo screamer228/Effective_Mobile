@@ -18,7 +18,7 @@ class TicketsRepositoryImpl @Inject constructor(
         val gson = Gson()
         val json = DataSourceReader.getJsonString(context, FILE_NAME)
         val response = gson.fromJson(json, TicketsResponse::class.java)
-        return ticketsDtoMapper.mapTicketsOffersDto(response)
+        return ticketsDtoMapper.mapTicketsDto(response)
     }
 }
 

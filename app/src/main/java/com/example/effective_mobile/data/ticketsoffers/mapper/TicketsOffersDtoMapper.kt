@@ -7,13 +7,13 @@ import com.example.effective_mobile.data.ticketsoffers.model.response.TicketsOff
 class TicketsOffersDtoMapper {
 
     fun mapTicketsOffersDto(response: TicketsOffersResponse): TicketsOffersDTO {
-        val mappedOffers = response.ticketsOffersResponse.map { ticketsOfferResponse ->
+        val mappedList = response.ticketsOffersResponse.map { ticketsOfferResponse ->
             TicketsOfferDTO(
                 ticketsOfferResponse.title,
                 ticketsOfferResponse.price.value.toString(),
                 ticketsOfferResponse.timeRange.joinToString("  ")
             )
         }
-        return TicketsOffersDTO(mappedOffers)
+        return TicketsOffersDTO(mappedList)
     }
 }

@@ -1,14 +1,13 @@
 package com.example.effective_mobile.data.tickets.mapper
 
-import android.util.Log
 import com.example.effective_mobile.data.tickets.model.dto.TicketDTO
 import com.example.effective_mobile.data.tickets.model.dto.TicketsDTO
 import com.example.effective_mobile.data.tickets.model.response.TicketsResponse
 
 class TicketsDtoMapper {
 
-    fun mapTicketsOffersDto(response: TicketsResponse): TicketsDTO {
-        val mappedOffers = response.ticketsResponse.map { ticketsResponse ->
+    fun mapTicketsDto(response: TicketsResponse): TicketsDTO {
+        val mappedList = response.ticketsResponse.map { ticketsResponse ->
             TicketDTO(
                 ticketsResponse.id,
                 ticketsResponse.badge,
@@ -20,7 +19,6 @@ class TicketsDtoMapper {
                 ticketsResponse.hasTransfer
             )
         }
-        Log.d("transfer check", "in dtoMapper: ${mappedOffers.first().hasTransfer}")
-        return TicketsDTO(mappedOffers)
+        return TicketsDTO(mappedList)
     }
 }
